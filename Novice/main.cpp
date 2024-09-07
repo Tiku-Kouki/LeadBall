@@ -1,5 +1,6 @@
 #include <Novice.h>
 #include"Tile.h"
+#include<Player.h>
 
 const char kWindowTitle[] = "学籍番号";
 
@@ -8,6 +9,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1280, 720);
+
+	//プレイヤー
+	Player* player=new Player;
+	player->Start();
+	
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
@@ -32,6 +38,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		tile->Update();
 		
 		///
+		
+		// プレイヤー
+		player->Update();
+		
 		/// ↑更新処理ここまで
 		///
 
@@ -40,6 +50,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 	
 		tile->Draw();
+
+		
+		// プレイヤー
+		player->Draw();
 
 		///
 		/// ↑描画処理ここまで
