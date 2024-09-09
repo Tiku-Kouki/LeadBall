@@ -6,7 +6,7 @@ private:
 
 public:
 	
-	void GetMouse(int mouseX, int mouseY);
+	void GetMouse(int MouseX, int MouseY);
 	bool leftGetMouse();
 	bool RightGetMouse();
 
