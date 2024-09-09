@@ -1,4 +1,5 @@
 #include <Novice.h>
+#include"Tile.h"
 
 const char kWindowTitle[] = "学籍番号";
 
@@ -12,6 +13,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	char keys[256] = {0};
 	char preKeys[256] = {0};
 
+	Tile* tile = new Tile();
+	tile->Initialize();
+
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
@@ -24,7 +28,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓更新処理ここから
 		///
-
+		
+		tile->Update();
+		
 		///
 		/// ↑更新処理ここまで
 		///
@@ -32,6 +38,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
+	
+		tile->Draw();
 
 		///
 		/// ↑描画処理ここまで
