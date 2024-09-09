@@ -6,6 +6,10 @@ void Player::Start() {
 	Speed = {3, 3};
 	BlueFlag = true;
 	RedFlag = false;
+	velocity = {2.0f, -10.0f};
+	isJump = false;
+	acceleration = {0.0f, 0.2f};
+	
 }
 
 void Player::Update() { 
@@ -14,7 +18,7 @@ void Player::Update() {
 	Novice::GetHitKeyStateAll(keys);
 
 	//Position.x += Speed.x; 
-
+	
 	//色替え
 	if (keys[DIK_R] != 0 && preKeys[DIK_R] == 0) {
 		RedFlag = true;
@@ -24,18 +28,38 @@ void Player::Update() {
 		RedFlag = false;
 		BlueFlag = true;
 	}
-
+	
 	//ジャンプ
-	if (keys[DIK_SPACE] != 0 && preKeys[DIK_SPACE] == 0) {
-		if (BlueFlag == true && RedFlag == false) {
-			Position.y -= 100;
-		} else if (BlueFlag == false && RedFlag == true) {
-			Position.y -= 200;
-		}
+	
+	isJump = true;
+		
+	
+	if (isJump == false)
+	{
+		velocity.y = -10.0f;
 	}
-
+	if (isJump == true)
+	{
+		Position.x += velocity.x;
+		Position.y += velocity.y;
+		// 重力
+		velocity.y += acceleration.y;
+	}
+	if (Position.y >= 800)
+	{
+		Position.y = 500;
+		Position.x = 0;
+		velocity.y = -10.0f;
+		isJump = false;
+	}
+	/*if (BlueFlag == true && RedFlag == false) {
+		velocity.y = -10.0f;
+	} else if (BlueFlag == false && RedFlag == true) {
+		velocity.y = -15.0f;
+	}*/
 	//重力
-	Position.y += Gravity;
+	//Position.y += Gravity;
+	
 }
 
 void Player::Draw() {
@@ -48,6 +72,32 @@ void Player::Draw() {
 	if (BlueFlag == false && RedFlag == true) {
 		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
 	}
+	Novice::ScreenPrintf(0, 0, "%f",Position.y);
 }
+
+//Vector2 Player::GetPosition() { 
+//	Vector2 position;
+//	position.x = Position.x;
+//	position.y = Position.y;
+//	return position;
+//}
+
+void Player::BLUEFlag() 
+{ velocity.y=-10.0f;
+	
+}
+
+void Player::BLUEFlag2() { 
+	if (keys[DIK_A])
+	{
+		Position.x += 100;
+	}
+}
+
+void Player::REDFlag() { velocity.y=-15.0f;
+	
+}
+
+void Player::REDFlag2() { RedFlag = false; }
 
 //ジャンプの制限作る

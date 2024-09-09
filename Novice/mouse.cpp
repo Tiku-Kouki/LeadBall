@@ -1,15 +1,15 @@
 #include "mouse.h"
  #include <Novice.h>
-void mouse::GetMouse(int MouseX, int MouseY) {
+void mouse::GetMouse(/*int MouseX, int MouseY*/) {
 
 
-	Novice::GetMousePosition(&MouseX, &MouseY);
+	Novice::GetMousePosition(&mouseX, &mouseY);
 
-	mouseY=MouseY *= -1;
-	mouseY=MouseY += 720;
+	/*mouseY *= -1;
+	mouseY += 720;*/
 
 	
-
+	
 	 
 }
 
