@@ -21,7 +21,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Tile* tile = new Tile();
 	tile->Initialize();
-
+	tile->SetPlayer(player);
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
