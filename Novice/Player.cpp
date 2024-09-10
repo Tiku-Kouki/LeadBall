@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include"Goal.h"
 void Player::Start() {
 
 	Position = {50,500};
@@ -9,7 +9,7 @@ void Player::Start() {
 	velocity = {2.0f, -10.0f};
 	isJump = false;
 	acceleration = {0.0f, 0.2f};
-	
+	goaltimer = 0;
 }
 
 void Player::Update() { 
@@ -59,6 +59,27 @@ void Player::Update() {
 	}*/
 	//重力
 	//Position.y += Gravity;
+
+	if (Position.x <= goal_->GetPosition().x + goal_->GetRadius().x &&
+		goal_->GetPosition().x <= Position.x + Size &&
+		Position.y <= goal_->GetPosition().y + Size &&
+		goal_->GetPosition().y <= Position.y + Size)
+	{
+		if (goaltimer <= 100) {
+			velocity.x = 0.0f;
+			velocity.y = 0.0f;
+			goaltimer++;
+		}
+		if (goaltimer >= 101)
+		{
+			velocity.y = -5.0f;
+			goalendtimer++;
+		}
+		if (goalendtimer >= 100)
+		{
+			goalendtimer = 101;
+		}
+	}
 	
 }
 
@@ -88,18 +109,10 @@ void Player::BLUEFlag()
 	RedFlag = false;
 }
 
-void Player::BLUEFlag2() { 
-	if (keys[DIK_A])
-	{
-		Position.x += 100;
-	}
-}
-
 void Player::REDFlag() { velocity.y=-15.0f;
 	BlueFlag = false;
 	RedFlag = true;
 }
 
-void Player::REDFlag2() { RedFlag = false; }
 
 //ジャンプの制限作る

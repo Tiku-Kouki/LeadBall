@@ -1,18 +1,20 @@
 #pragma once
 #include <Vector2.h>
 #include <Novice.h>
+
+class Goal;
+
 class Player {
 	public:
 	void Start();
     void Update();
 	void Draw();
+	void SetGoal(Goal* goal) { goal_ = goal; };
 	Vector2 GetPosition() { return Position; };
 	float GetSize() { return  Size; }
 	
 	void BLUEFlag();
-	void BLUEFlag2();
 	void REDFlag();
-	void REDFlag2();
 
 	private:
 	// キー入力結果を受け取る箱
@@ -27,7 +29,10 @@ class Player {
 	bool BlueFlag;
 	bool RedFlag;
 	bool isJump;
-	
+
+	Goal* goal_ = nullptr;
+	int goaltimer;
+	int goalendtimer;
 
 	const float Size = 32;
 	const float Gravity=3;
