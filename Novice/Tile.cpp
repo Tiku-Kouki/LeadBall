@@ -43,10 +43,6 @@ void Tile::Update() {
 			break;
 		}
 		
-		if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0)
-		{
-			istile[i] = false;
-		}
 		
 		   
 		if (tilepos[i].x <= Mouse->SetMouse().x && 
