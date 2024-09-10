@@ -9,6 +9,8 @@ class Player {
 	Vector2 GetPosition() { return Position; };
 	float GetSize() { return  Size; }
 	
+	float GetScroll() { return scrollX; }
+
 	void BLUEFlag();
 	void BLUEFlag2();
 	void REDFlag();
@@ -27,7 +29,12 @@ class Player {
 	bool BlueFlag;
 	bool RedFlag;
 	bool isJump;
-	
+
+	//スクロール
+	float startScrollX;
+	float scrollX;
+	float kWindowWidth = 1280;
+
 
 	const float Size = 32;
 	const float Gravity=3;

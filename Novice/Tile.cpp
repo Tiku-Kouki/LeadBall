@@ -55,6 +55,7 @@ void Tile::Update() {
 		}
 		
 		
+		
 		if (player_->GetPosition().x <= tilepos[i].x + tileradius[0] && tilepos[i].x <= player_->GetPosition().x + player_->GetSize() && player_->GetPosition().y <= tilepos[i].y + tileradius[1] &&
 		    tilepos[i].y <= player_->GetPosition().y + player_->GetSize() &&
 		    istile[i] == true)

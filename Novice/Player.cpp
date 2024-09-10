@@ -10,6 +10,10 @@ void Player::Start() {
 	isJump = false;
 	acceleration = {0.0f, 0.2f};
 	
+	// スクロール
+	startScrollX = 500;
+	scrollX = 0;
+
 }
 
 void Player::Update() { 
@@ -51,6 +55,8 @@ void Player::Update() {
 		Position.x = 0;
 		velocity.y = -10.0f;
 		isJump = false;
+
+		scrollX = 0;
 	}
 	/*if (BlueFlag == true && RedFlag == false) {
 		velocity.y = -10.0f;
@@ -59,18 +65,31 @@ void Player::Update() {
 	}*/
 	//重力
 	//Position.y += Gravity;
+
+
+	//スクロールの処理
+	if (Position.x >= kWindowWidth + startScrollX) {
+
+		scrollX = kWindowWidth;
+	}
+	else if (Position.x >= startScrollX) {
+	
+		scrollX = Position.x - startScrollX;
+	
+	}
+
 	
 }
 
 void Player::Draw() {
-	 Novice::DrawEllipse((int)Position.x, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	Novice::DrawEllipse((int)Position.x , (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
-		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
 	}
 	//ボール赤くなる
 	if (BlueFlag == false && RedFlag == true) {
-		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x- (int)scrollX, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
 	}
 	
 }
