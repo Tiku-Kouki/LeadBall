@@ -17,10 +17,12 @@ void Tile::Initialize() {
 	{
 		fixedtilepos[i] = {0.0f};
 		fixedredtilepos[i] = {0.0f};
+		fixedtilepos[i].x = -200.0f;
+		fixedredtilepos[i].x = -200.0f;
 		fixedtileradius[i] = 100;
-		fixedredtileradius[i]=100;
-		isfixedtile[i]=true;
-		isfixedredtile[i]=true;
+		fixedredtileradius[i] = 100;
+		isfixedtile[i] = true;
+		isfixedredtile[i] = true;
 	}
 	Mouse = std::make_unique<mouse>();
 	fixedtilepos[0] = {100.0f, 500.0f};
