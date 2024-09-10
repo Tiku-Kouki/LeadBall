@@ -17,6 +17,8 @@ void Tile::Initialize() {
 	{
 		fixedtilepos[i] = {0.0f};
 		fixedredtilepos[i] = {0.0f};
+		fixedtilepos[i].x = -200.0f;
+		fixedredtilepos[i].x = -200.0f;
 		fixedtileradius[i] = 100;
 		fixedredtileradius[i]=100;
 		isfixedtile[i]=true;
