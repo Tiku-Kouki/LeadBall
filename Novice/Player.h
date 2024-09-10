@@ -9,7 +9,7 @@ class Player {
 	Vector2 GetPosition() { return Position; };
 	float GetSize() { return  Size; }
 	
-	float GetScroll() { return scrollX; }
+	int GetScroll() { return (int)scrollX; }
 
 	void BLUEFlag();
 	void BLUEFlag2();
