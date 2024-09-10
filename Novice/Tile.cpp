@@ -66,21 +66,36 @@ void Tile::Update() {
 			player_->BLUEFlag();
 			break;
 		}
+		
+			
+		
+		
+	}
 
-		if (tilepos[i].x - tileradius[0] <= Mouse->SetMouse().x && Mouse->SetMouse().x <= tilepos[i].x + tileradius[0] && tilepos[i].y - tileradius[1] <= Mouse->SetMouse().y &&
-		    Mouse->SetMouse().y <= tilepos[i].y + tileradius[1] && istile[i]==true) {
+	for (int i = 0; i < 20; i++)
+	{
+		if (tilepos[i].x <= Mouse->SetMouse().x && Mouse->SetMouse().x <= tilepos[i].x + tileradius[0] && tilepos[i].y <= Mouse->SetMouse().y &&
+		    Mouse->SetMouse().y <= tilepos[i].y + tileradius[1] && istile[i] == true) {
 			isOnCollision = true;
 			break;
 		} else {
 			isOnCollision = false;
-		
 		}
-		
+	}
+
+	for (int i = 0; i < 20; i++) {
+		if (redtilepos[i].x <= Mouse->SetMouse().x && Mouse->SetMouse().x <= redtilepos[i].x + redtileradius[0] && redtilepos[i].y <= Mouse->SetMouse().y && Mouse->SetMouse().y <= redtilepos[i].y + redtileradius[1] &&
+		    isredtile[i] == true) {
+			isRedOnCollision = true;
+			break;
+		} else {
+			isRedOnCollision = false;
+		}
 	}
 
 	for (int i = 1; i < 5; i++) {
 		if (Mouse->RightGetMouse()) {
-			if (isredtile[i] == false) {
+			if (isredtile[i] == false&&isRedOnCollision==false) {
 				redtilepos[i] = Mouse->SetMouse();
 				isredtile[i] = true;
 				break;
