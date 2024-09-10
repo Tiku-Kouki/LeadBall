@@ -33,6 +33,7 @@ private:
 	bool isredtile[5];
 	
 	bool isOnCollision;
+	bool isRedOnCollision;
 	
 	Vector2 pos;
 	std::unique_ptr<mouse> Mouse;
