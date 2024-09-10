@@ -72,7 +72,7 @@ void Player::Draw() {
 	if (BlueFlag == false && RedFlag == true) {
 		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
 	}
-	Novice::ScreenPrintf(0, 0, "%f",Position.y);
+	
 }
 
 //Vector2 Player::GetPosition() { 
@@ -84,7 +84,8 @@ void Player::Draw() {
 
 void Player::BLUEFlag() 
 { velocity.y=-10.0f;
-	
+	BlueFlag = true;
+	RedFlag = false;
 }
 
 void Player::BLUEFlag2() { 
@@ -95,7 +96,8 @@ void Player::BLUEFlag2() {
 }
 
 void Player::REDFlag() { velocity.y=-15.0f;
-	
+	BlueFlag = false;
+	RedFlag = true;
 }
 
 void Player::REDFlag2() { RedFlag = false; }

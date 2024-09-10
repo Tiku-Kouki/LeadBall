@@ -16,17 +16,23 @@ public:
 
 	void SetPlayer(Player* player) { player_ = player; };
 
-	//void SetPosition(Vector2 Pos);
-
+	
 private:
+	//タイル
 	Vector2 tilepos[11];
 	int tileradius[11];
 	bool istile[11];
 	Vector2 redtilepos[5];
 	int redtileradius[5];
+	Vector2 fixedtilepos[10];
+	Vector2 fixedredtilepos[10];
+	int fixedtileradius[10];
+	int fixedredtileradius[10];
+	bool isfixedtile[10];
+	bool isfixedredtile[10];
 	bool isredtile[5];
-	bool istileOnCollision;
-	bool isredtileOnCollision;
+	
+	bool isOnCollision;
 	
 	Vector2 pos;
 	std::unique_ptr<mouse> Mouse;
