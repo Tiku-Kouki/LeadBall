@@ -1,18 +1,21 @@
 #include "Tile.h"
 #include"Player.h"
 void Tile::Initialize() {
+	//青のタイルの初期化
 	for (int i = 0; i < 11; i++) {
 		tilepos[i].x = 0.0f;
 		tilepos[i].y = 0.0f;
 		tileradius[i] = 100;
 		istile[i] = false;
 	}
+	//赤のタイルの初期化
 	for (int i = 0; i < 5; i++) {
 		redtilepos[i].x = 0.0f;
 		redtilepos[i].y = 0.0f;
 		redtileradius[i] = 100;
 		isredtile[i] = false;
 	}
+	//固定タイルの初期化
 	for (int i = 0; i < 10; i++)
 	{
 		fixedtilepos[i] = {0.0f};
@@ -26,7 +29,7 @@ void Tile::Initialize() {
 	}
 	Mouse = std::make_unique<mouse>();
 	fixedtilepos[0] = {100.0f, 500.0f};
-	fixedtilepos[1] = {250.0f, 500.0f};
+	fixedtilepos[1] = {210.0f, 500.0f};
 	fixedredtilepos[0] = {400.0f, 500.0f};
 	isOnCollision = false;
 }
@@ -69,7 +72,7 @@ void Tile::Update() {
 		
 		
 	}
-
+	//クリックしたものを表示しなくするための処理
 	for (int i = 0; i < 20; i++)
 	{
 		if (tilepos[i].x <= Mouse->SetMouse().x && Mouse->SetMouse().x <= tilepos[i].x + tileradius[0] && tilepos[i].y <= Mouse->SetMouse().y &&
@@ -90,6 +93,7 @@ void Tile::Update() {
 			isRedOnCollision = false;
 		}
 	}
+	//------------------------------------//
 
 	for (int i = 1; i < 5; i++) {
 		if (Mouse->RightGetMouse()) {

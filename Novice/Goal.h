@@ -17,5 +17,8 @@ private:
 	Vector2 position;
 
 	Vector2 radius;
+	//スタートも作っておく
+	Vector2 startposition;
+	Vector2 startradius;
 
 };

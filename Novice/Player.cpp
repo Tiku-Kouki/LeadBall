@@ -10,6 +10,7 @@ void Player::Start() {
 	isJump = false;
 	acceleration = {0.0f, 0.2f};
 	goaltimer = 0;
+	goalendtimer = 0;
 }
 
 void Player::Update() { 
@@ -48,7 +49,7 @@ void Player::Update() {
 	if (Position.y >= 800)
 	{
 		Position.y = 500;
-		Position.x = 0;
+		Position.x = 50;
 		velocity.y = -10.0f;
 		isJump = false;
 	}
