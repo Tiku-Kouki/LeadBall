@@ -13,6 +13,8 @@ class Player {
 	Vector2 GetPosition() { return Position; };
 	float GetSize() { return  Size; }
 	
+	int GetScroll() { return (int)scrollX; }
+
 	void BLUEFlag();
 	void REDFlag();
 
@@ -29,6 +31,12 @@ class Player {
 	bool BlueFlag;
 	bool RedFlag;
 	bool isJump;
+
+	//スクロール
+	float startScrollX;
+	float scrollX;
+	float kWindowWidth = 1280;
+
 
 	Goal* goal_ = nullptr;
 	int goaltimer;

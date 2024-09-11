@@ -44,14 +44,15 @@ void Tile::Update() {
 	
 		if (isOnCollision==false&&Mouse->leftGetMouse() && istile[i] == false) {
 			tilepos[i] = Mouse->SetMouse();
+			tilepos[i].x += player_->GetScroll();
 			istile[i] = true;
 			break;
 		}
 		
 		
 		   
-		if (tilepos[i].x <= Mouse->SetMouse().x && 
-			 Mouse->SetMouse().x <= tilepos[i].x + tileradius[0] && 
+		if (tilepos[i].x <= Mouse->SetMouse().x + player_->GetScroll() && 
+			 Mouse->SetMouse().x + player_->GetScroll() <= tilepos[i].x + tileradius[0] && 
 			tilepos[i].y <= Mouse->SetMouse().y  &&
 		    Mouse->SetMouse().y <= tilepos[i].y + tileradius[1] && 
 			istile[i] == true && Mouse->leftGetMouse()) {
@@ -60,7 +61,9 @@ void Tile::Update() {
 		}
 		
 		
-		if (player_->GetPosition().x <= tilepos[i].x + tileradius[0] && tilepos[i].x <= player_->GetPosition().x + player_->GetSize() && player_->GetPosition().y <= tilepos[i].y + tileradius[1] &&
+		
+		if (player_->GetPosition().x  <= tilepos[i].x + tileradius[0] && tilepos[i].x <= player_->GetPosition().x+ player_->GetSize() &&
+		    player_->GetPosition().y <= tilepos[i].y + tileradius[1] &&
 		    tilepos[i].y <= player_->GetPosition().y + player_->GetSize() &&
 		    istile[i] == true)
 		{
@@ -75,7 +78,7 @@ void Tile::Update() {
 	//クリックしたものを表示しなくするための処理
 	for (int i = 0; i < 20; i++)
 	{
-		if (tilepos[i].x <= Mouse->SetMouse().x && Mouse->SetMouse().x <= tilepos[i].x + tileradius[0] && tilepos[i].y <= Mouse->SetMouse().y &&
+		if (tilepos[i].x <= Mouse->SetMouse().x  && Mouse->SetMouse().x  <= tilepos[i].x + tileradius[0] && tilepos[i].y <= Mouse->SetMouse().y &&
 		    Mouse->SetMouse().y <= tilepos[i].y + tileradius[1] && istile[i] == true) {
 			isOnCollision = true;
 			break;
@@ -85,7 +88,9 @@ void Tile::Update() {
 	}
 
 	for (int i = 0; i < 20; i++) {
-		if (redtilepos[i].x <= Mouse->SetMouse().x && Mouse->SetMouse().x <= redtilepos[i].x + redtileradius[0] && redtilepos[i].y <= Mouse->SetMouse().y && Mouse->SetMouse().y <= redtilepos[i].y + redtileradius[1] &&
+		if (redtilepos[i].x <= Mouse->SetMouse().x + player_->GetScroll() && Mouse->SetMouse().x + player_->GetScroll() <= redtilepos[i].x + redtileradius[0] &&
+		    redtilepos[i].y <= Mouse->SetMouse().y &&
+		    Mouse->SetMouse().y <= redtilepos[i].y + redtileradius[1] &&
 		    isredtile[i] == true) {
 			isRedOnCollision = true;
 			break;
@@ -98,13 +103,14 @@ void Tile::Update() {
 	for (int i = 1; i < 5; i++) {
 		if (Mouse->RightGetMouse()) {
 			if (isredtile[i] == false&&isRedOnCollision==false) {
-				redtilepos[i] = Mouse->SetMouse();
+				redtilepos[i] = Mouse->SetMouse() ;
+				redtilepos[i].x += player_->GetScroll();
 				isredtile[i] = true;
 				break;
 			}
 		}
-		if (redtilepos[i].x <= Mouse->SetMouse().x&& 
-			Mouse->SetMouse().x <= redtilepos[i].x + redtileradius[0] && 
+		if (redtilepos[i].x <= Mouse->SetMouse().x + player_->GetScroll() && 
+			Mouse->SetMouse().x + player_->GetScroll() <= redtilepos[i].x + redtileradius[0] && 
 			redtilepos[i].y <= Mouse->SetMouse().y&&
 		    Mouse->SetMouse().y <= redtilepos[i].y + redtileradius[1] && 
 			isredtile[i] == true && Mouse->RightGetMouse() ) {
@@ -137,19 +143,19 @@ void Tile::Draw() {
 	
 	for (int i = 0; i < 11; i++) {
 		if (istile[i] == true) {
-			Novice::DrawBox((int)tilepos[i].x, (int)tilepos[i].y, tileradius[i], tileradius[i], 0.0f, BLUE, kFillModeSolid);
+			Novice::DrawBox((int)tilepos[i].x - player_->GetScroll(), (int)tilepos[i].y, tileradius[i], tileradius[i], 0.0f, BLUE, kFillModeSolid);
 			
 		}
 		
 	}
 	for (int i = 0; i < 5; i++) {
 		if (isredtile[i] == true) {
-			Novice::DrawBox((int)redtilepos[i].x, (int)redtilepos[i].y, redtileradius[i], redtileradius[i], 0.0f, RED, kFillModeSolid);
+			Novice::DrawBox((int)redtilepos[i].x - player_->GetScroll(), (int)redtilepos[i].y, redtileradius[i], redtileradius[i], 0.0f, RED, kFillModeSolid);
 		}
 	}
 	for (int i = 0; i < 10; i++) {
-		Novice::DrawBox((int)fixedtilepos[i].x+i*2, (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, BLUE, kFillModeSolid);
-		Novice::DrawBox((int)fixedredtilepos[i].x+i*4, (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, RED, kFillModeSolid);
+		Novice::DrawBox((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, BLUE, kFillModeSolid);
+		Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, RED, kFillModeSolid);
 	}
 	
 }
