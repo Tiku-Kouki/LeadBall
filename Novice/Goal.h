@@ -1,6 +1,9 @@
 #pragma once
 #include<Vector2.h>
 #include<Novice.h>
+
+class Player;
+
 class Goal {
 public:
 	void Initialize();
@@ -8,6 +11,8 @@ public:
 	void Update();
 
 	void Draw();
+
+	void SetPlayer(Player* player) { player_ = player; };
 
 	Vector2 GetPosition() { return position; }
 
@@ -20,5 +25,7 @@ private:
 	//スタートも作っておく
 	Vector2 startposition;
 	Vector2 startradius;
+
+	Player* player_ = nullptr;
 
 };

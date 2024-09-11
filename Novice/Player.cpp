@@ -106,7 +106,7 @@ void Player::Update() {
 
 
 void Player::Draw() {
-	Novice::DrawEllipse((int)Position.x , (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	Novice::DrawEllipse((int)Position.x - (int)scrollX, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
 		Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);

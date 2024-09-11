@@ -26,7 +26,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Goal* goal = new Goal();
 	goal->Initialize();
-
+	goal->SetPlayer(player);
 	player->SetGoal(goal);
 
 	// ウィンドウの×ボタンが押されるまでループ
