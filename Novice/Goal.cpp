@@ -2,9 +2,9 @@
 #include"Player.h"
 void Goal::Initialize() 
 { 
-	position = {1100, 600};
+	position = {2700, 500};
 	radius = {100, 100};
-	startposition = {30, 550};
+	startposition = {0, 500};
 	startradius = {50, 50};
 }
 

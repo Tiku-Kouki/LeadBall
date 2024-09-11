@@ -2,13 +2,13 @@
 #include"Goal.h"
 void Player::Start() {
 
-	Position = {50,500};
+	Position = {25,465};
 	Speed = {3, 3};
 	BlueFlag = true;
 	RedFlag = false;
-	velocity = {2.0f, -10.0f};
+	velocity = {1.97f, -10.0f};
 	isJump = false;
-	acceleration = {0.0f, 0.2f};
+	acceleration = {0.0f, 0.4f};
 	
 	// スクロール
 	startScrollX = 500;
@@ -39,6 +39,14 @@ void Player::Update() {
 	
 	isJump = true;
 		
+	if (keys[DIK_D])
+	{
+		Position.x += velocity.x+40;
+	}
+	if (keys[DIK_A])
+	{
+		Position.x -= velocity.x+40;
+	}
 	
 	if (isJump == false)
 	{
@@ -53,8 +61,8 @@ void Player::Update() {
 	}
 	if (Position.y >= 800)
 	{
-		Position.y = 500;
-		Position.x = 50;
+		Position.y = 465;
+		Position.x = 25;
 		velocity.y = -10.0f;
 		isJump = false;
 
@@ -89,9 +97,9 @@ void Player::Update() {
 		}
 	}
 	// スクロールの処理
-	if (Position.x >= kWindowWidth + startScrollX) {
+	if (Position.x >= kWindowWidth + startScrollX+300) {
 
-		scrollX = kWindowWidth;
+		scrollX = kWindowWidth+300;
 	} else if (Position.x >= startScrollX) {
 
 		scrollX = Position.x - startScrollX;

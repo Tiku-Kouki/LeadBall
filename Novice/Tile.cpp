@@ -5,14 +5,14 @@ void Tile::Initialize() {
 	for (int i = 0; i < 11; i++) {
 		tilepos[i].x = 0.0f;
 		tilepos[i].y = 0.0f;
-		tileradius[i] = 100;
+		tileradius[i] = 50;
 		istile[i] = false;
 	}
 	//赤のタイルの初期化
 	for (int i = 0; i < 5; i++) {
 		redtilepos[i].x = 0.0f;
 		redtilepos[i].y = 0.0f;
-		redtileradius[i] = 100;
+		redtileradius[i] = 50;
 		isredtile[i] = false;
 	}
 	//固定タイルの初期化
@@ -22,15 +22,26 @@ void Tile::Initialize() {
 		fixedredtilepos[i] = {0.0f};
 		fixedtilepos[i].x = -200.0f;
 		fixedredtilepos[i].x = -200.0f;
-		fixedtileradius[i] = 100;
-		fixedredtileradius[i] = 100;
+		fixedtileradius[i] = 50;
+		fixedredtileradius[i] = 50;
 		isfixedtile[i] = true;
 		isfixedredtile[i] = true;
 	}
 	Mouse = std::make_unique<mouse>();
 	fixedtilepos[0] = {100.0f, 500.0f};
-	fixedtilepos[1] = {210.0f, 500.0f};
-	fixedredtilepos[0] = {400.0f, 500.0f};
+	fixedtilepos[1] = {198.0f, 500.0f};
+	fixedtilepos[2] = {296.0f, 500.0f};
+	fixedtilepos[3] = {494.0f, 500.0f};
+	fixedtilepos[4] = {692.0f, 500.0f};
+	fixedredtilepos[0] = {900.0f, 500.0f};
+	fixedredtilepos[1] = {1046.0f, 500.0f};
+	fixedredtilepos[2] = {1192.0f, 500.0f};
+	fixedredtilepos[3] = {1488.0f, 500.0f};
+	fixedredtilepos[4] = {1783.0f, 500.0f};
+	fixedtilepos[5] = {2089.0f, 500.0f};
+	fixedtilepos[6] = {2338.0f, 500.0f};
+	fixedredtilepos[5] = {2530.0f, 500.0f};
+
 	isOnCollision = false;
 }
 
@@ -121,6 +132,7 @@ void Tile::Update() {
 		    player_->GetPosition().y <= redtilepos[i].y + redtileradius[1] &&
 		    redtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isredtile[i] == true) {
 			player_->REDFlag();
+			break;
 		}
 	}
 
@@ -128,10 +140,12 @@ void Tile::Update() {
 		if (player_->GetPosition().x <= fixedtilepos[i].x + fixedtileradius[0] && fixedtilepos[i].x <= player_->GetPosition().x + player_->GetSize() && 
 			player_->GetPosition().y <= fixedtilepos[i].y + fixedtileradius[1] && fixedtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isfixedtile[i] == true) {
 			player_->BLUEFlag();
+			break;
 		}
 		if (player_->GetPosition().x <= fixedredtilepos[i].x + fixedredtileradius[0] && fixedredtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
 		    player_->GetPosition().y <= fixedredtilepos[i].y + fixedredtileradius[1] && fixedredtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isfixedredtile[i] == true) {
 			player_->REDFlag();
+			break;
 		}
 	}
 
@@ -157,6 +171,14 @@ void Tile::Draw() {
 		Novice::DrawBox((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, BLUE, kFillModeSolid);
 		Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, RED, kFillModeSolid);
 	}
+	
+		for (int i = 0; i < 58; i++)
+		{
+		Novice::DrawLine(0 + (50 * i) - player_->GetScroll(), 0 , 0 + (50 * i) - player_->GetScroll(), 720, BLACK);
+		}
+	    for (int j = 0; j < 14; j++) {
+		    Novice::DrawLine(0 - player_->GetScroll(), 0 + (50 * j) , 2960 - player_->GetScroll(), 0 + (50 * j) , BLACK);
+	    }
 	
 }
 
