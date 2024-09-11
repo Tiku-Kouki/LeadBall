@@ -1,5 +1,6 @@
 #include "Player.h"
 #include"Goal.h"
+#include"Tile.h"
 void Player::Start() {
 
 	Position = {25,465};
@@ -8,7 +9,7 @@ void Player::Start() {
 	RedFlag = false;
 	velocity = {1.97f, -10.0f};
 	isJump = false;
-	acceleration = {0.0f, 0.4f};
+	acceleration = {0.0f, 0.5f};
 	
 	// スクロール
 	startScrollX = 500;
@@ -16,6 +17,7 @@ void Player::Start() {
 
 	goaltimer = 0;
 	goalendtimer = 0;
+	endscroll = 2000;
 }
 
 void Player::Update() { 
@@ -24,6 +26,14 @@ void Player::Update() {
 	Novice::GetHitKeyStateAll(keys);
 
 	//Position.x += Speed.x; 
+
+	if (tile_->IsStage())
+	{
+		acceleration.y = 0.4f;
+	}
+	if (tile_->IsStage2()) {
+		acceleration.y = 0.5f;
+	}
 	
 	//色替え
 	if (keys[DIK_R] != 0 && preKeys[DIK_R] == 0) {
@@ -36,7 +46,6 @@ void Player::Update() {
 	}
 	
 	//ジャンプ
-	
 	isJump = true;
 		
 	if (keys[DIK_D])
@@ -97,9 +106,9 @@ void Player::Update() {
 		}
 	}
 	// スクロールの処理
-	if (Position.x >= kWindowWidth + startScrollX+300) {
+	if (Position.x >= kWindowWidth + startScrollX+endscroll) {
 
-		scrollX = kWindowWidth+300;
+		scrollX = kWindowWidth+endscroll;
 	} else if (Position.x >= startScrollX) {
 
 		scrollX = Position.x - startScrollX;

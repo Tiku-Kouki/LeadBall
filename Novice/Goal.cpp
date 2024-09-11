@@ -1,14 +1,25 @@
 #include "Goal.h"
 #include"Player.h"
+#include"Tile.h"
 void Goal::Initialize() 
 { 
-	position = {2700, 500};
+	position = {3540, 500};
 	radius = {100, 100};
 	startposition = {0, 500};
 	startradius = {50, 50};
 }
 
-void Goal::Update() {}
+void Goal::Update() 
+{
+	if (tile_->IsStage())
+	{
+		position.x = 2700;
+	}
+	if (tile_->IsStage2())
+	{
+		position.x = 3540;
+	}
+}
 
 void Goal::Draw() 
 { 

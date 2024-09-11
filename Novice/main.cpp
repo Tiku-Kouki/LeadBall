@@ -28,6 +28,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	goal->Initialize();
 	goal->SetPlayer(player);
 	player->SetGoal(goal);
+	player->SetTile(tile);
+	goal->SetTile(tile);
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {

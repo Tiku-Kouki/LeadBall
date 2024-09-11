@@ -4,6 +4,8 @@
 
 class Player;
 
+class Tile;
+
 class Goal {
 public:
 	void Initialize();
@@ -13,6 +15,8 @@ public:
 	void Draw();
 
 	void SetPlayer(Player* player) { player_ = player; };
+
+	void SetTile(Tile* tile) { tile_ = tile; }
 
 	Vector2 GetPosition() { return position; }
 
@@ -27,5 +31,6 @@ private:
 	Vector2 startradius;
 
 	Player* player_ = nullptr;
+	Tile* tile_ = nullptr;
 
 };
