@@ -88,24 +88,22 @@ void Player::Update() {
 			goalendtimer = 101;
 		}
 	}
-	
-}
-
-
-
-	//スクロールの処理
+	// スクロールの処理
 	if (Position.x >= kWindowWidth + startScrollX) {
 
 		scrollX = kWindowWidth;
-	}
-	else if (Position.x >= startScrollX) {
-	
+	} else if (Position.x >= startScrollX) {
+
 		scrollX = Position.x - startScrollX;
-	
 	}
+}
+
+
+
+
 
 	
-}
+
 
 void Player::Draw() {
 	Novice::DrawEllipse((int)Position.x , (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
