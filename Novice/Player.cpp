@@ -76,7 +76,7 @@ void Player::Update() {
 }
 
 void Player::Draw() {
-	 //Novice::DrawEllipse((int)Position.x, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	jumpEffect.Draw();
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
 		Novice::DrawSprite((int)Position.x-32, (int)Position.y-32, Image[1], 2, 2, 0.0f, WHITE);
@@ -85,7 +85,7 @@ void Player::Draw() {
 	if (BlueFlag == false && RedFlag == true) {
 		Novice::DrawSprite((int)Position.x-32, (int)Position.y-32, Image[0], 2, 2, 0.0f, WHITE);
 	}
-	jumpEffect.Draw();
+	
 }
 
 //Vector2 Player::GetPosition() { 
