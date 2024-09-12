@@ -10,6 +10,8 @@ void Player::Start() {
 	isJump = false;
 	acceleration = {0.0f, 0.2f};
 	
+	jumpEffect.Initialize(Position);
+	effectTimer = 8;
 }
 
 void Player::Update() { 
@@ -32,6 +34,14 @@ void Player::Update() {
 	//ジャンプ
 	
 	isJump = true;
+	if (isEffectActive) {
+		effectTimer--;
+		if (effectTimer == 0) {
+			effectTimer = 8;
+			isEffectActive = false;
+		}
+	}
+	jumpEffect.SetEffectFlag(isEffectActive);
 		
 	
 	if (isJump == false)
@@ -44,6 +54,7 @@ void Player::Update() {
 		Position.y += velocity.y;
 		// 重力
 		velocity.y += acceleration.y;
+		jumpEffect.SetPosition(Position);
 	}
 	if (Position.y >= 800)
 	{
@@ -51,7 +62,9 @@ void Player::Update() {
 		Position.x = 0;
 		velocity.y = -10.0f;
 		isJump = false;
+		jumpEffect.Initialize(Position);
 	}
+	jumpEffect.Update();
 	/*if (BlueFlag == true && RedFlag == false) {
 		velocity.y = -10.0f;
 	} else if (BlueFlag == false && RedFlag == true) {
@@ -72,7 +85,7 @@ void Player::Draw() {
 	if (BlueFlag == false && RedFlag == true) {
 		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
 	}
-	
+	jumpEffect.Draw();
 }
 
 //Vector2 Player::GetPosition() { 
@@ -86,6 +99,7 @@ void Player::BLUEFlag()
 { velocity.y=-10.0f;
 	BlueFlag = true;
 	RedFlag = false;
+	isEffectActive = true;
 }
 
 void Player::BLUEFlag2() { 
@@ -98,8 +112,7 @@ void Player::BLUEFlag2() {
 void Player::REDFlag() { velocity.y=-15.0f;
 	BlueFlag = false;
 	RedFlag = true;
+	isEffectActive = true;
 }
 
 void Player::REDFlag2() { RedFlag = false; }
-
-//ジャンプの制限作る
