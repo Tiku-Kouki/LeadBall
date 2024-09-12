@@ -50,11 +50,11 @@ void Player::Update() {
 		
 	if (keys[DIK_D])
 	{
-		Position.x += velocity.x+40;
+		Position.x += velocity.x+10;
 	}
 	if (keys[DIK_A])
 	{
-		Position.x -= velocity.x+40;
+		Position.x -= velocity.x+10;
 	}
 	
 	if (isJump == false)
