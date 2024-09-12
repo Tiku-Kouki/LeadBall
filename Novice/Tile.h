@@ -18,6 +18,8 @@ public:
 
 	void SelectStage();
 
+	void SelectUI();
+
 	bool IsStage() { return isstage; }
 	bool IsStage2() { return isstage2; }
 	bool IsStage3() { return isstage3; }
@@ -65,5 +67,11 @@ private:
 
 	char keys[256];
 	char preKeys[256];
+
+	int ui[11] = {Novice::LoadTexture("./Resorce/UI.png"), Novice::LoadTexture("./Resorce/0.png"), Novice::LoadTexture("./Resorce/1.png"),
+				  Novice::LoadTexture("./Resorce/2.png"), Novice::LoadTexture("./Resorce/3.png"), Novice::LoadTexture("./Resorce/4.png"),
+	              Novice::LoadTexture("./Resorce/5.png"),  Novice::LoadTexture("./Resorce/6.png"), Novice::LoadTexture("./Resorce/7.png"), 
+				  Novice::LoadTexture("./Resorce/8.png"), Novice::LoadTexture("./Resorce/9.png")
+	};
 
 };

@@ -39,6 +39,8 @@ void Tile::Initialize() {
 	
 
 	isOnCollision = false;
+
+	SelectUI();
 }
 
 void Tile::Update() {
@@ -50,16 +52,23 @@ void Tile::Update() {
 		isstage = true;
 		isstage2 = false;
 		isstage3 = false;
+		bluecaunter = 7;
+		redcaunter = 5;
+		
 	}
 	if (keys[DIK_LSHIFT] && preKeys[DIK_LSHIFT] == 0) {
 		isstage2 = true;
 		isstage = false;
 		isstage3 = false;
+		bluecaunter = 11;
+		redcaunter = 8;
 	}
 	if (keys[DIK_RSHIFT] && preKeys[DIK_RSHIFT] == 0) {
 		isstage3 = true;
 		isstage = false;
 		isstage2 = false;
+		bluecaunter = 12;
+		redcaunter = 6;
 	}
 
 	SelectStage();
@@ -71,7 +80,7 @@ void Tile::Update() {
 			tilepos[i].x += player_->GetScroll() - halfTileRadius[i];
 			tilepos[i].y -= halfTileRadius[i];
 			istile[i] = true;
-			bluecaunter += 1;
+			bluecaunter -= 1;
 			break;
 		}
 		
@@ -83,7 +92,7 @@ void Tile::Update() {
 		    Mouse->SetMouse().y <= tilepos[i].y + tileradius[1] && 
 			istile[i] == true && Mouse->leftGetMouse()) {
 			istile[i] = false;
-			bluecaunter -= 1;
+			bluecaunter += 1;
 			break;
 		}
 		
@@ -134,7 +143,7 @@ void Tile::Update() {
 				redtilepos[i].x += player_->GetScroll() - halfRedTileRadius[i];
 				redtilepos[i].y -= halfRedTileRadius[i];
 				isredtile[i] = true;
-				redcaunter += 1;
+				redcaunter -= 1;
 				break;
 			}
 		}
@@ -144,7 +153,7 @@ void Tile::Update() {
 		    Mouse->SetMouse().y <= redtilepos[i].y + redtileradius[1] && 
 			isredtile[i] == true && Mouse->RightGetMouse() ) {
 			isredtile[i] = false;
-			redcaunter -= 1;
+			redcaunter += 1;
 			break;
 		}
 		if (player_->GetPosition().x <= redtilepos[i].x + redtileradius[0] && redtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
@@ -199,7 +208,58 @@ void Tile::Draw() {
 			Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, WHITE, kFillModeWireFrame);
 		}
 	}
+	Novice::DrawSprite(0, 0, ui[0], 1.0f, 1.0f, 0.0f, WHITE);
+	Novice::DrawBox(60, 70, 25, 25, 0.0f, BLUE, kFillModeSolid);
+	Novice::DrawBox(60, 70, 25, 25, 0.0f, BLACK, kFillModeWireFrame);
 
+	Novice::DrawBox(60,130, 25,25, 0.0f, RED, kFillModeSolid);
+	Novice::DrawBox(60, 130, 25,25, 0.0f, BLACK, kFillModeWireFrame);
+
+	if (bluecaunter == 0||bluecaunter==10)
+	{
+		Novice::DrawSprite(140, 30, ui[1], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 1||bluecaunter==11) {
+		Novice::DrawSprite(150, 20, ui[2], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 2||bluecaunter==12) {
+		Novice::DrawSprite(140, 30, ui[3], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 3) {
+		Novice::DrawSprite(140, 30, ui[4], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 4) {
+		Novice::DrawSprite(140, 30, ui[5], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 5) {
+		Novice::DrawSprite(140, 30, ui[6], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 6) {
+		Novice::DrawSprite(140, 30, ui[7], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 7) {
+		Novice::DrawSprite(140, 30, ui[8], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 8) {
+		Novice::DrawSprite(140, 30, ui[9], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (bluecaunter == 9) {
+		Novice::DrawSprite(140, 30, ui[10], 1.0f, 1.0f, 0.0f, WHITE);
+	}  
+	if (bluecaunter == 10||bluecaunter==11||bluecaunter==12) {
+		Novice::DrawSprite(130, 23, ui[2], 1.0f, 1.0f, 0.0f, WHITE);
+	}
+
+	if (redcaunter == 0) {
+		Novice::DrawSprite(140, 90, ui[1], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 1 ) {
+		Novice::DrawSprite(150, 80, ui[2], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 2) {
+		Novice::DrawSprite(140, 90, ui[3], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 3) {
+		Novice::DrawSprite(140, 90, ui[4], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 4) {
+		Novice::DrawSprite(140, 90, ui[5], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 5) {
+		Novice::DrawSprite(140, 90, ui[6], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 6) {
+		Novice::DrawSprite(140, 90, ui[7], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 7) {
+		Novice::DrawSprite(140, 90, ui[8], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 8) {
+		Novice::DrawSprite(140, 90, ui[9], 1.0f, 1.0f, 0.0f, WHITE);
+	}
 	
 	/*	for (int i = 0; i < 70; i++)
 		{
@@ -230,6 +290,7 @@ void Tile::SelectStage()
 		fixedredtilepos[5] = {2530.0f, 500.0f};
 		tileNum = 7;
 		redtileNum = 5;
+		
 	}
 	// ステージ2にする処理
 	if (isstage2 == true) {
@@ -256,8 +317,9 @@ void Tile::SelectStage()
 		fixedredtilepos[10] = {2692.0f, 450.0f};
 		fixedtilepos[11] = {3142.0f, 450.0f};
 		fixedredtilepos[10] = {3292.0f, 450.0f};
-		bluecaunter = 11;
-		redcaunter = 8;
+		tileNum = 11;
+		redtileNum = 8;
+		
 	}
 	//ステージ3にする処理
 	if (isstage3 == true) {
@@ -284,7 +346,13 @@ void Tile::SelectStage()
 		fixedredtilepos[4] = {2800.0f, 450.0f};
 		tileNum = 12;
 		redtileNum = 6;
+	
 	}
+}
+
+void Tile::SelectUI() 
+{
+	
 }
 
 

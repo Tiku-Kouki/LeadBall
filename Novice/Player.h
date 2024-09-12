@@ -24,6 +24,8 @@ class Player {
 	void REDFlag();
 	void REDFlag2();
 
+	
+
 	void CheckCollisionWithTile();
 
 	private:
