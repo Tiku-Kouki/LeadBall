@@ -6,6 +6,7 @@ void Tile::Initialize() {
 		tilepos[i].x = 0.0f;
 		tilepos[i].y = 0.0f;
 		tileradius[i] = 50;
+		halfTileRadius[i] = 25;
 		istile[i] = false;
 	}
 	//赤のタイルの初期化
@@ -13,6 +14,7 @@ void Tile::Initialize() {
 		redtilepos[i].x = 0.0f;
 		redtilepos[i].y = 0.0f;
 		redtileradius[i] = 50;
+		halfRedTileRadius[i] = 25;
 		isredtile[i] = false;
 	}
 	//固定タイルの初期化
@@ -66,7 +68,8 @@ void Tile::Update() {
 	
 		if (isOnCollision==false&&Mouse->leftGetMouse() && istile[i] == false) {
 			tilepos[i] = Mouse->SetMouse();
-			tilepos[i].x += player_->GetScroll();
+			tilepos[i].x += player_->GetScroll() - halfTileRadius[i];
+			tilepos[i].y -= halfTileRadius[i];
 			istile[i] = true;
 			bluecaunter += 1;
 			break;
@@ -128,7 +131,8 @@ void Tile::Update() {
 		if (Mouse->RightGetMouse()) {
 			if (isredtile[i] == false&&isRedOnCollision==false) {
 				redtilepos[i] = Mouse->SetMouse() ;
-				redtilepos[i].x += player_->GetScroll();
+				redtilepos[i].x += player_->GetScroll() - halfRedTileRadius[i];
+				redtilepos[i].y -= halfRedTileRadius[i];
 				isredtile[i] = true;
 				redcaunter += 1;
 				break;

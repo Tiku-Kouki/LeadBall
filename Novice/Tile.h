@@ -26,16 +26,21 @@ private:
 	//タイル
 	Vector2 tilepos[11];
 	int tileradius[11];
+	int halfTileRadius[11];
 	bool istile[11];
 
 	Vector2 redtilepos[6];
 	int redtileradius[6];
+	int halfRedTileRadius[6];
 	bool isredtile[6];
 
 	Vector2 fixedtilepos[15];
 	Vector2 fixedredtilepos[15];
 	int fixedtileradius[15];
 	int fixedredtileradius[15];
+
+	
+
 	bool isfixedtile[15];
 	bool isfixedredtile[15];
 	
