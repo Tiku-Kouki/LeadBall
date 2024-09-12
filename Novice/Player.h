@@ -56,13 +56,10 @@ class Player {
 	const float Size = 16;
 	const float Gravity=3;
 
-	int Image[2] = {Novice::LoadTexture("./ResorceO/Player_1.png"), Novice::LoadTexture("./ResorceO/Player_2.png")};
-
 	JumpEffect jumpEffect;
 	bool isEffectActive = false; 
 	float effectTimer = 0.0f;
 
-};
 	//ゴールしたか
 	bool goalFlag;
 

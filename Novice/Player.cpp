@@ -171,6 +171,7 @@ void Player::BLUEFlag()
 	BlueFlag = true;
 	RedFlag = false;
 	isEffectActive = true;
+	Novice::PlayAudio(SoundSE[1], false, 1.0f);
 }
 
 void Player::BLUEFlag2() { 
@@ -178,7 +179,6 @@ void Player::BLUEFlag2() {
 	{
 		Position.x += 100;
 	}
-	Novice::PlayAudio(SoundSE[1], false, 1.0f);
 }
 
 void Player::REDFlag() { velocity.y=-15.0f;
