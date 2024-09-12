@@ -76,14 +76,14 @@ void Player::Update() {
 }
 
 void Player::Draw() {
-	 Novice::DrawEllipse((int)Position.x, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	 //Novice::DrawEllipse((int)Position.x, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
-		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x-32, (int)Position.y-32, Image[1], 2, 2, 0.0f, WHITE);
 	}
 	//ボール赤くなる
 	if (BlueFlag == false && RedFlag == true) {
-		Novice::DrawSprite((int)Position.x, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x-32, (int)Position.y-32, Image[0], 2, 2, 0.0f, WHITE);
 	}
 	jumpEffect.Draw();
 }
