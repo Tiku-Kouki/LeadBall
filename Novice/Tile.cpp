@@ -358,20 +358,24 @@ void Tile::Stage1() {
 	isstage = true;
 	isstage2 = false;
 	isstage3 = false;
+	bluecaunter = 7;
+	redcaunter = 5;
 }
 
 void Tile::Stage2() {
 	isstage2 = true;
 	isstage = false;
 	isstage3 = false;
+	bluecaunter = 11;
+	redcaunter = 8;
 }
 
 void Tile::Stage3() {
 	isstage2 = false;
 	isstage = false;
 	isstage3 = true;
+	bluecaunter = 12;
+	redcaunter = 6;
 }
-
-
 
 
