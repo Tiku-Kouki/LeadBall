@@ -40,7 +40,7 @@ void JumpEffect::Draw() {
 	if (EffectFlag) {
 		for (int i = 0; i < MAX_PARTICLES; i++) {
 			if (particles[i].isActive) {
-				Novice::DrawEllipse(static_cast<int>(particles[i].Position.x), static_cast<int>(particles[i].Position.y)+5, 5, 5, 0.0f, WHITE, kFillModeSolid);
+				Novice::DrawEllipse(static_cast<int>(particles[i].Position.x) - (int)scrollX, static_cast<int>(particles[i].Position.y) + 5, 5, 5, 0.0f, WHITE, kFillModeSolid);
 			}
 		}
 	}

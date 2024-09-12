@@ -12,6 +12,8 @@ public:
 
 	void SetEffectFlag(bool effectFlag) { EffectFlag = effectFlag; };
 
+	void SetScrollX(float ScrollX) { scrollX = ScrollX; };
+
 private:
 	typedef struct Particle {
 		bool isActive;                 // パーティクルが生きてるかのフラグ
@@ -35,4 +37,6 @@ private:
 	float effectDuration = 1.0f;
 	float displayTime = 0.0f;
 	bool EffectFlag = false;
+
+	float scrollX;
 };

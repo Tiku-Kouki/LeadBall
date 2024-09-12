@@ -93,6 +93,7 @@ void Player::Update() {
 		jumpEffect.Initialize(Position);
 	}
 	jumpEffect.Update();
+	jumpEffect.SetScrollX(scrollX);
 	/*if (BlueFlag == true && RedFlag == false) {
 		velocity.y = -10.0f;
 	} else if (BlueFlag == false && RedFlag == true) {
@@ -134,22 +135,18 @@ void Player::Update() {
 
 
 
-
-	
-
-
 void Player::Draw() {
-	Novice::DrawEllipse((int)Position.x - (int)scrollX, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	//Novice::DrawEllipse((int)Position.x - (int)scrollX, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
 	jumpEffect.Draw();
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
-		Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
-		Novice::DrawSprite((int)Position.x-32, (int)Position.y-32, Image[1], 2, 2, 0.0f, WHITE);
+		//Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x - 32 - (int)scrollX, (int)Position.y - 32, Image[1], 2, 2, 0.0f, WHITE);
 	}
 	//ボール赤くなる
 	if (BlueFlag == false && RedFlag == true) {
-		Novice::DrawSprite((int)Position.x- (int)scrollX, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
-		Novice::DrawSprite((int)Position.x-32, (int)Position.y-32, Image[0], 2, 2, 0.0f, WHITE);
+		//Novice::DrawSprite((int)Position.x- (int)scrollX, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x - 32 - (int)scrollX, (int)Position.y - 32, Image[0], 2, 2, 0.0f, WHITE);
 	}
 	
 }
