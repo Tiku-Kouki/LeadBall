@@ -178,7 +178,20 @@ void Tile::Update() {
 	}
 
 
-	
+	if (Mouse->leftGetMouse() && Mouse->IsMouseOverBox((int)ResetPos.x, (int)ResetPos.y, (int)ResetSize, (int)ResetSize) ){
+		for (int i = 0; i < tileNum; i++) {
+			if (istile[i] == true) {
+				istile[i] = false;
+				bluecaunter += 1;
+			}
+		}
+		for (int i = 0; i < redtileNum; i++) {
+			if (isredtile[i] == true) {
+				isredtile[i] = false;
+				redcaunter += 1;
+			}
+		}
+	}
 }
 
 void Tile::Draw() {
@@ -267,6 +280,7 @@ void Tile::Draw() {
 		    Novice::DrawLine(0 - player_->GetScroll(), 0 + (50 * j) , 3960 - player_->GetScroll(), 0 + (50 * j) , BLACK);
 	    }*/
 	
+	Novice::DrawBox((int)ResetPos.x, (int)ResetPos.y, (int)ResetSize, (int)ResetSize, 0.0f, WHITE, kFillModeSolid);
 }
 
 void Tile::SelectStage() 

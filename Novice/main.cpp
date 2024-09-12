@@ -31,6 +31,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	goal->SetTile(tile);
 
 	int Scene = 0;
+	//タイル更新制限
+	bool StageFlag = false;
 
 	typedef struct Box {
 		Vector2 Position;
@@ -75,11 +77,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    goal->Initialize();
 			    tile->Initialize();
 			    player->Initilize();
+			    StageFlag = false;
 
-				//ゲーム説明
-				// ステージ１
-			    // ステージ2
-			    // ステージ3
+				//ゲーム説明// ステージ１
+			    // ステージ2// ステージ3の順番
 			    for (int i = 0; i < 4; i++) {
 				    Novice::DrawBox((int)Item[i].Position.x, (int)Item[i].Position.y, (int)Item[i].Size.x, (int)Item[i].Size.y, 0.0f, BLUE, kFillModeSolid);
 			    
@@ -114,7 +115,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    Scene = 2;
 				}
 			    // タイル
-			    tile->Stage1();
+			    if (!StageFlag) {
+				    tile->Stage1();
+			    }
+			    StageFlag = true;
 			    tile->Update();
 
 			    // Draw
@@ -137,7 +141,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    Scene = 2;
 			    }
 			    // タイル
-			    tile->Stage2();
+			    if (!StageFlag) {
+				    tile->Stage1();
+			    }
+			    StageFlag = true;
 			    tile->Update();
 
 				//Draw
@@ -160,7 +167,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    Scene = 2;
 			    }
 			    // タイル
-			    tile->Stage3();
+			    if (!StageFlag) {
+				    tile->Stage1();
+			    }
+			    StageFlag = true;
 			    tile->Update();
 
 			    // Draw

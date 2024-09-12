@@ -75,4 +75,6 @@ private:
 				  Novice::LoadTexture("./Resorce/8.png"), Novice::LoadTexture("./Resorce/9.png")
 	};
 
+	const Vector2 ResetPos{1160, 60};
+	const float ResetSize = 80;
 };
