@@ -196,8 +196,7 @@ void Tile::Draw() {
 		}
 	}
 
-	Novice::ScreenPrintf(200, 0, "%d", bluecaunter);
-	Novice::ScreenPrintf(200, 100, "%d", redcaunter);
+	
 	/*	for (int i = 0; i < 70; i++)
 		{
 		Novice::DrawLine(0 + (50 * i) - player_->GetScroll(), 0 , 0 + (50 * i) - player_->GetScroll(), 720, BLACK);

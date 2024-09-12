@@ -34,6 +34,9 @@ void Player::Update() {
 	if (tile_->IsStage2()) {
 		acceleration.y = 0.5f;
 	}
+	if (tile_->IsStage3()) {
+		acceleration.y = 0.5f;
+	}
 	
 	//色替え
 	if (keys[DIK_R] != 0 && preKeys[DIK_R] == 0) {
@@ -48,14 +51,7 @@ void Player::Update() {
 	//ジャンプ
 	isJump = true;
 		
-	if (keys[DIK_D])
-	{
-		Position.x += velocity.x+10;
-	}
-	if (keys[DIK_A])
-	{
-		Position.x -= velocity.x+10;
-	}
+	
 	
 	if (isJump == false)
 	{
