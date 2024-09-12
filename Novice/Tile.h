@@ -39,6 +39,8 @@ private:
 	bool isfixedtile[15];
 	bool isfixedredtile[15];
 	
+	int tileNum;
+	int redtileNum;
 	
 	bool isOnCollision;
 	bool isRedOnCollision;
@@ -46,6 +48,10 @@ private:
 	bool isstage;
 	bool isstage2;
 	bool isstage3;
+
+	//確認用
+	int bluecaunter;
+	int redcaunter;
 	
 	Vector2 pos;
 	std::unique_ptr<mouse> Mouse;

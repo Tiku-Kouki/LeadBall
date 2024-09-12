@@ -40,6 +40,9 @@ void Player::Update() {
 	if (tile_->IsStage2()) {
 		acceleration.y = 0.5f;
 	}
+	if (tile_->IsStage3()) {
+		acceleration.y = 0.5f;
+	}
 	
 	//色替え
 	if (keys[DIK_R] != 0 && preKeys[DIK_R] == 0) {
@@ -63,14 +66,7 @@ void Player::Update() {
 	}
 	jumpEffect.SetEffectFlag(isEffectActive);
 		
-	if (keys[DIK_D])
-	{
-		Position.x += velocity.x+40;
-	}
-	if (keys[DIK_A])
-	{
-		Position.x -= velocity.x+40;
-	}
+	
 	
 	if (isJump == false)
 	{
