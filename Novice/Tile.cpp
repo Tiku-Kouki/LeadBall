@@ -351,7 +351,7 @@ void Tile::SelectStage()
 void Tile::SelectUI() 
 {
 	
-	}
+	
 }
 
 void Tile::Stage1() {
