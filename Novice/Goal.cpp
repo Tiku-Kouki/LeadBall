@@ -3,7 +3,7 @@
 #include"Tile.h"
 void Goal::Initialize() 
 { 
-	position = {3540, 500};
+	position = {3000, 500};
 	radius = {100, 100};
 	startposition = {0, 500};
 	startradius = {50, 50};
@@ -18,6 +18,9 @@ void Goal::Update()
 	if (tile_->IsStage2())
 	{
 		position.x = 3540;
+	}
+	if (tile_->IsStage3()) {
+		position.x = 3000;
 	}
 }
 
