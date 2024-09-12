@@ -18,6 +18,10 @@ void Player::Start() {
 	goaltimer = 0;
 	goalendtimer = 0;
 	endscroll = 2000;
+	acceleration = {0.0f, 0.2f};
+	
+	jumpEffect.Initialize(Position);
+	effectTimer = 8;
 
 	goalFlag = true;
 }
@@ -48,7 +52,16 @@ void Player::Update() {
 	}
 	
 	//ジャンプ
+	
 	isJump = true;
+	if (isEffectActive) {
+		effectTimer--;
+		if (effectTimer == 0) {
+			effectTimer = 8;
+			isEffectActive = false;
+		}
+	}
+	jumpEffect.SetEffectFlag(isEffectActive);
 		
 	if (keys[DIK_D])
 	{
@@ -69,6 +82,7 @@ void Player::Update() {
 		Position.y += velocity.y;
 		// 重力
 		velocity.y += acceleration.y;
+		jumpEffect.SetPosition(Position);
 	}
 	if (Position.y >= 800) {
 		Position.y = 465;
@@ -77,7 +91,10 @@ void Player::Update() {
 		isJump = false;
 
 		scrollX = 0;
+		jumpEffect.Initialize(Position);
 	}
+	jumpEffect.Update();
+	jumpEffect.SetScrollX(scrollX);
 	if (Position.y >= 600) {
 		Novice::PlayAudio(SoundSE[0], false, 1.0f);
 	}
@@ -126,19 +143,18 @@ void Player::Update() {
 
 
 
-
-	
-
-
 void Player::Draw() {
-	Novice::DrawEllipse((int)Position.x - (int)scrollX, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	//Novice::DrawEllipse((int)Position.x - (int)scrollX, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
+	jumpEffect.Draw();
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
-		Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
+		//Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x - 32 - (int)scrollX, (int)Position.y - 32, Image[1], 2, 2, 0.0f, WHITE);
 	}
 	//ボール赤くなる
 	if (BlueFlag == false && RedFlag == true) {
-		Novice::DrawSprite((int)Position.x- (int)scrollX, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
+		//Novice::DrawSprite((int)Position.x- (int)scrollX, (int)Position.y, Image[0], 1, 1, 0.0f, WHITE);
+		Novice::DrawSprite((int)Position.x - 32 - (int)scrollX, (int)Position.y - 32, Image[0], 2, 2, 0.0f, WHITE);
 	}
 	
 }
@@ -154,14 +170,22 @@ void Player::BLUEFlag()
 { velocity.y=-10.0f;
 	BlueFlag = true;
 	RedFlag = false;
+	isEffectActive = true;
+}
+
+void Player::BLUEFlag2() { 
+	if (keys[DIK_A])
+	{
+		Position.x += 100;
+	}
 	Novice::PlayAudio(SoundSE[1], false, 1.0f);
 }
 
 void Player::REDFlag() { velocity.y=-15.0f;
 	BlueFlag = false;
 	RedFlag = true;
+	isEffectActive = true;
 	Novice::PlayAudio(SoundSE[2], false, 1.0f);
 }
 
-
-//ジャンプの制限作る
+void Player::REDFlag2() { RedFlag = false; }
