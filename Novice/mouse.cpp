@@ -1,5 +1,4 @@
 #include "mouse.h"
- #include <Novice.h>
 void mouse::GetMouse(/*int MouseX, int MouseY*/) {
 
 
@@ -16,12 +15,16 @@ void mouse::GetMouse(/*int MouseX, int MouseY*/) {
 bool mouse::leftGetMouse() {
 
 	bool num = Novice::IsTriggerMouse(0);
-
+	if (num) {
+		Novice::PlayAudio(SoundSE[0], false, 0.5f);
+	}
 	return num;
 }
 
 bool mouse::RightGetMouse() {
 	bool num = Novice::IsTriggerMouse(1);
-
+	if (num) {
+		Novice::PlayAudio(SoundSE[1], false, 0.5f);
+	}
 	return num;
 }

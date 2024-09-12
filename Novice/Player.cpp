@@ -18,6 +18,8 @@ void Player::Start() {
 	goaltimer = 0;
 	goalendtimer = 0;
 	endscroll = 2000;
+
+	goalFlag = true;
 }
 
 void Player::Update() { 
@@ -68,14 +70,16 @@ void Player::Update() {
 		// 重力
 		velocity.y += acceleration.y;
 	}
-	if (Position.y >= 800)
-	{
+	if (Position.y >= 800) {
 		Position.y = 465;
 		Position.x = 25;
 		velocity.y = -10.0f;
 		isJump = false;
 
 		scrollX = 0;
+	}
+	if (Position.y >= 600) {
+		Novice::PlayAudio(SoundSE[0], false, 1.0f);
 	}
 	/*if (BlueFlag == true && RedFlag == false) {
 		velocity.y = -10.0f;
@@ -84,16 +88,20 @@ void Player::Update() {
 	}*/
 	//重力
 	//Position.y += Gravity;
-
 	if (Position.x <= goal_->GetPosition().x + goal_->GetRadius().x &&
 		goal_->GetPosition().x <= Position.x + Size &&
 		Position.y <= goal_->GetPosition().y + Size &&
 		goal_->GetPosition().y <= Position.y + Size)
 	{
+
+		if (goalFlag) {
+			Novice::PlayAudio(SoundSE[0], false, 0.5f);
+		}
 		if (goaltimer <= 100) {
 			velocity.x = 0.0f;
 			velocity.y = 0.0f;
 			goaltimer++;
+			goalFlag = false;
 		}
 		if (goaltimer >= 101)
 		{
@@ -146,11 +154,13 @@ void Player::BLUEFlag()
 { velocity.y=-10.0f;
 	BlueFlag = true;
 	RedFlag = false;
+	Novice::PlayAudio(SoundSE[1], false, 1.0f);
 }
 
 void Player::REDFlag() { velocity.y=-15.0f;
 	BlueFlag = false;
 	RedFlag = true;
+	Novice::PlayAudio(SoundSE[2], false, 1.0f);
 }
 
 

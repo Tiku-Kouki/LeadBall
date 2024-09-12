@@ -51,5 +51,14 @@ class Player {
 	const float Size = 16;
 	const float Gravity=3;
 
-	int Image[2] = {Novice::LoadTexture("./ResorceO/Player_1.png"), Novice::LoadTexture("./ResorceO/Player_2.png")};
+	//ゴールしたか
+	bool goalFlag;
+
+	int Image[2] = {Novice::LoadTexture("./NoviceResources/Player_1.png"), Novice::LoadTexture("./NoviceResources/Player_2.png")};
+
+	int SoundSE[3] = {
+	    Novice::LoadAudio("./NoviceResources/Sound/Down.wav"),
+	    Novice::LoadAudio("./NoviceResources/Sound/Jump1.wav"),
+	    Novice::LoadAudio("./NoviceResources/Sound/Jump2.wav")
+	};
 };
