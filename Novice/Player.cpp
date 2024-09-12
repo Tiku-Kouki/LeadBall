@@ -185,3 +185,4 @@ void Player::REDFlag() { velocity.y=-15.0f;
 }
 
 void Player::REDFlag2() { RedFlag = false; }
+
