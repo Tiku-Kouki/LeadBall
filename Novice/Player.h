@@ -2,14 +2,23 @@
 #include <Vector2.h>
 #include <Novice.h>
 #include <JumpEffect.h>
+
+class Goal;
+
+class Tile;
+
 class Player {
 	public:
 	void Start();
     void Update();
 	void Draw();
+	void SetGoal(Goal* goal) { goal_ = goal; };
+	void SetTile(Tile* tile) { tile_ = tile; }
 	Vector2 GetPosition() { return Position; };
 	float GetSize() { return  Size; }
 	
+	int GetScroll() { return (int)scrollX; }
+
 	void BLUEFlag();
 	void BLUEFlag2();
 	void REDFlag();
@@ -30,9 +39,21 @@ class Player {
 	bool BlueFlag;
 	bool RedFlag;
 	bool isJump;
-	
 
-	const float Size = 32;
+	//スクロール
+	float startScrollX;
+	float scrollX;
+	float kWindowWidth = 1280;
+	float endscroll;
+
+
+	Goal* goal_ = nullptr;
+	int goaltimer;
+	int goalendtimer;
+
+	Tile* tile_ = nullptr;
+
+	const float Size = 16;
 	const float Gravity=3;
 
 	int Image[2] = {Novice::LoadTexture("./ResorceO/Player_1.png"), Novice::LoadTexture("./ResorceO/Player_2.png")};

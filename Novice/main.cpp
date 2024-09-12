@@ -1,6 +1,7 @@
 #include <Novice.h>
 #include"Tile.h"
 #include<Player.h>
+#include"Goal.h"
 
 const char kWindowTitle[] = "学籍番号";
 
@@ -22,6 +23,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Tile* tile = new Tile();
 	tile->Initialize();
 	tile->SetPlayer(player);
+
+	Goal* goal = new Goal();
+	goal->Initialize();
+	goal->SetPlayer(player);
+	player->SetGoal(goal);
+	player->SetTile(tile);
+	goal->SetTile(tile);
+
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
@@ -35,7 +44,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 		
+		//タイル
 		tile->Update();
+		//ゴール
+		goal->Update();
 		
 		///
 		
@@ -48,12 +60,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
-	
+		//タイル
 		tile->Draw();
 
 		
 		// プレイヤー
 		player->Draw();
+		//ゴール
+		goal->Draw();
 
 		///
 		/// ↑描画処理ここまで
@@ -68,6 +82,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 	}
 
+	delete tile;
+	delete goal;
 	// ライブラリの終了
 	Novice::Finalize();
 	return 0;
