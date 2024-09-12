@@ -10,8 +10,9 @@ public:
 	void GetMouse(/*int MouseX, int MouseY*/);
 	bool leftGetMouse();
 	bool RightGetMouse();
+	bool IsMouseOverBox(int boxX, int boxY, int boxWidth, int boxHeight);
+
 	Vector2 SetMouse() { return Vector2((float)mouseX, (float)mouseY); }
 
-	int SoundSE[2] = {Novice::LoadAudio("./Resorce/Sound/Left.mp3"), Novice::LoadAudio("./Resorce/Sound/Right.mp3")};
-
+	
 };

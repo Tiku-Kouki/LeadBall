@@ -11,14 +11,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1280, 720);
 
-	//プレイヤー
-	Player* player=new Player;
-	player->Start();
-	
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
 	char preKeys[256] = {0};
+	// プレイヤー
+	Player* player = new Player;
+	player->Initilize();
 
 	Tile* tile = new Tile();
 	tile->Initialize();
@@ -31,6 +30,23 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	player->SetTile(tile);
 	goal->SetTile(tile);
 
+	int Scene = 0;
+
+	typedef struct Box {
+		Vector2 Position;
+		Vector2 Size;
+		int Image;
+	} Box;
+
+	Box Item[4] = {
+	    {100, 100, 100, 100},
+        {300, 100, 100, 100},
+        {100, 300, 100, 100},
+        {300, 300, 100, 100}
+    };
+
+	std::unique_ptr<mouse> Mouse;
+	Mouse = std::make_unique<mouse>();
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
@@ -43,16 +59,122 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓更新処理ここから
 		///
+		Mouse->GetMouse();
+		switch (Scene) {
+			case 0:
+				//タイトル
+
+			    if (Mouse->leftGetMouse()) {
+				    Scene = 1;
+				}
+
+				Novice::DrawBox(100, 100, 100, 100, 0.0f, RED, kFillModeSolid);
+				break;
+		    case 1:
+			    //画面選択
+			    goal->Initialize();
+			    tile->Initialize();
+			    player->Initilize();
+
+				//ゲーム説明
+				// ステージ１
+			    // ステージ2
+			    // ステージ3
+			    for (int i = 0; i < 4; i++) {
+				    Novice::DrawBox((int)Item[i].Position.x, (int)Item[i].Position.y, (int)Item[i].Size.x, (int)Item[i].Size.y, 0.0f, BLUE, kFillModeSolid);
+			    
+					if (Mouse->leftGetMouse() && Mouse->IsMouseOverBox((int)Item[i].Position.x, (int)Item[i].Position.y, (int)Item[i].Size.x, (int)Item[i].Size.y)) {
+					    Scene = i + 3;
+				    }
+				} 
+			    break;
+		    case 2:
+			    // クリア
+			    if (Mouse->leftGetMouse()) {
+				    Scene = 0;
+			    }
+			    Novice::DrawBox(100, 100, 100, 100, 0.0f, BLACK, kFillModeSolid);
+			    break;
+		    case 3:
+			    // ゲーム説明
+			    if (Mouse->leftGetMouse()) {
+				    Scene = 1;
+			    }
+			    Novice::DrawBox(100, 100, 100, 100, 0.0f, WHITE, kFillModeSolid);
+			    break;
+		    case 4:
+			    // ステージ１
+
+				// Update
+			    //  //ゴール
+			    goal->Update();
+			    // プレイヤー
+			    player->Update();
+			    if (player->GetGoalSceneFlag()) {
+				    Scene = 2;
+				}
+			    // タイル
+			    tile->Stage1();
+			    tile->Update();
+
+			    // Draw
+			    //  ゴール
+			    goal->Draw();
+			    // タイル
+			    tile->Draw();
+			    // プレイヤー
+			    player->Draw();
+			    break;
+		    case 5:
+			    // ステージ2
+				
+				//Update 
+				// //ゴール
+			    goal->Update();
+			    // プレイヤー
+			    player->Update();
+			    if (player->GetGoalSceneFlag()) {
+				    Scene = 2;
+			    }
+			    // タイル
+			    tile->Stage2();
+			    tile->Update();
+
+				//Draw
+			    // ゴール
+			    goal->Draw();
+				//タイル
+			    tile->Draw();
+			    // プレイヤー
+			    player->Draw();
+			    break;
+		    case 6:
+			    // ステージ3
+				
+				// Update
+			    //  //ゴール
+			    goal->Update();
+			    // プレイヤー
+			    player->Update();
+			    if (player->GetGoalSceneFlag()) {
+				    Scene = 2;
+			    }
+			    // タイル
+			    tile->Stage3();
+			    tile->Update();
+
+			    // Draw
+			    //  ゴール
+			    goal->Draw();
+			    // タイル
+			    tile->Draw();
+			    // プレイヤー
+			    player->Draw();
+			    break;
+		}
 		
-		//タイル
-		tile->Update();
-		//ゴール
-		goal->Update();
 		
-		///
 		
-		// プレイヤー
-		player->Update();
 		
 		/// ↑更新処理ここまで
 		///
@@ -60,14 +182,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
-		//タイル
-		tile->Draw();
 
 		
-		// プレイヤー
-		player->Draw();
-		//ゴール
-		goal->Draw();
+		
 
 		///
 		/// ↑描画処理ここまで

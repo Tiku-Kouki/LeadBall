@@ -9,7 +9,7 @@ class Tile;
 
 class Player {
 	public:
-	void Start();
+	void Initilize();
     void Update();
 	void Draw();
 	void SetGoal(Goal* goal) { goal_ = goal; };
@@ -18,6 +18,7 @@ class Player {
 	float GetSize() { return  Size; }
 	
 	int GetScroll() { return (int)scrollX; }
+	bool GetGoalSceneFlag() { return GoalsceneFlag; }
 
 	void BLUEFlag();
 	void BLUEFlag2();
@@ -62,6 +63,7 @@ class Player {
 
 	//ゴールしたか
 	bool goalFlag;
+	bool GoalsceneFlag;
 
 	int Image[2] = {Novice::LoadTexture("./Resorce/Player_1.png"), Novice::LoadTexture("./Resorce/Player_2.png")};
 

@@ -67,6 +67,7 @@ void Tile::Update() {
 			tilepos[i] = Mouse->SetMouse();
 			tilepos[i].x += player_->GetScroll();
 			istile[i] = true;
+			Novice::PlayAudio(SoundSE[0], false, 0.5f);
 			break;
 		}
 		
@@ -127,6 +128,7 @@ void Tile::Update() {
 				redtilepos[i] = Mouse->SetMouse() ;
 				redtilepos[i].x += player_->GetScroll();
 				isredtile[i] = true;
+				Novice::PlayAudio(SoundSE[1], false, 0.5f);
 				break;
 			}
 		}
@@ -239,6 +241,24 @@ void Tile::SelectStage()
 		fixedtilepos[11] = {3142.0f, 450.0f};
 		fixedredtilepos[10] = {3292.0f, 450.0f};
 	}
+}
+
+void Tile::Stage1() {
+	isstage = true;
+	isstage2 = false;
+	isstage3 = false;
+}
+
+void Tile::Stage2() {
+	isstage2 = true;
+	isstage = false;
+	isstage3 = false;
+}
+
+void Tile::Stage3() {
+	isstage2 = false;
+	isstage = false;
+	isstage3 = true;
 }
 
 

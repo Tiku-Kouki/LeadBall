@@ -18,6 +18,10 @@ public:
 
 	void SelectStage();
 
+	void Stage1();
+	void Stage2();
+	void Stage3();
+
 	bool IsStage() { return isstage; }
 	bool IsStage2() { return isstage2; }
 	bool IsStage3() { return isstage3; }
@@ -51,6 +55,8 @@ private:
 	std::unique_ptr<mouse> Mouse;
 	Player* player_ = nullptr;
 	
+	int SoundSE[2] = {Novice::LoadAudio("./Resorce/Sound/Left.mp3"), Novice::LoadAudio("./Resorce/Sound/Right.mp3")};
+
 
 	char keys[256];
 	char preKeys[256];
