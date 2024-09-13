@@ -20,6 +20,8 @@ class Player {
 	int GetScroll() { return (int)scrollX; }
 	bool GetGoalSceneFlag() { return GoalsceneFlag; }
 
+	bool IsDrop() { return isdrop; }
+
 	void BLUEFlag();
 	void BLUEFlag2();
 	void REDFlag();
@@ -48,6 +50,8 @@ class Player {
 	float scrollX;
 	float kWindowWidth = 1280;
 	float endscroll;
+
+	bool isdrop;
 
 
 	Goal* goal_ = nullptr;

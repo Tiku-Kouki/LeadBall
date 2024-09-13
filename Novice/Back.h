@@ -1,7 +1,9 @@
 #pragma once
 #include <Vector2.h>
 #include <Novice.h>
-#include <Player.h>
+
+
+class Player;
 
 class Back {
 public:
@@ -14,7 +16,7 @@ public:
 private:
 	Player* player_ = nullptr;
 
-	Vector2 position[4];
+	Vector2 position[8];
 
 	int BackSp[2] = {Novice::LoadTexture("./Resorce/Back.png"), Novice::LoadTexture("./Resorce/BackCloud.png")};
 };

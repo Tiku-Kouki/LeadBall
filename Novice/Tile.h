@@ -27,6 +27,8 @@ public:
 	bool IsStage() { return isstage; }
 	bool IsStage2() { return isstage2; }
 	bool IsStage3() { return isstage3; }
+
+	
 	
 private:
 	//タイル
@@ -54,6 +56,8 @@ private:
 	bool isstage;
 	bool isstage2;
 	bool isstage3;
+
+	
 
 	//確認用
 	int bluecaunter;
