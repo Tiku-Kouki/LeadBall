@@ -62,11 +62,13 @@ void Back::Update() {
 void Back::Draw() { 
 	Novice::DrawSprite((int)position[0].x - player_->GetScroll(), (int)position[0].y, BackSp[0], 1, 1, 0.0f, WHITE);
 	Novice::DrawSprite((int)position[1].x - player_->GetScroll(), (int)position[1].y, BackSp[0], 1, 1, 0.0f, WHITE);
-	Novice::DrawSprite((int)position[2].x - player_->GetScroll(), (int)position[2].y, BackSp[0], 1, 1, 0.0f, WHITE);
+	Novice::DrawSprite((int)position[4].x - player_->GetScroll(), (int)position[4].y, BackSp[0], 1, 1, 0.0f, WHITE);
+	Novice::DrawSprite((int)position[6].x - player_->GetScroll(), (int)position[6].y, BackSp[0], 1, 1, 0.0f, WHITE);
 
-	Novice::DrawSprite((int)position[3].x- player_->GetScroll(), (int)position[3].y, BackSp[1], 1, 1, 0.0f, WHITE);
-	Novice::DrawSprite((int)position[4].x- player_->GetScroll(), (int)position[4].y, BackSp[1], 1, 1, 0.0f, WHITE);
+	Novice::DrawSprite((int)position[2].x - player_->GetScroll(), (int)position[2].y, BackSp[1], 1, 1, 0.0f, WHITE);
+	Novice::DrawSprite((int)position[3].x - player_->GetScroll(), (int)position[3].y, BackSp[1], 1, 1, 0.0f, WHITE);
 	Novice::DrawSprite((int)position[5].x - player_->GetScroll(), (int)position[5].y, BackSp[1], 1, 1, 0.0f, WHITE);
+	Novice::DrawSprite((int)position[7].x - player_->GetScroll(), (int)position[7].y, BackSp[1], 1, 1, 0.0f, WHITE);
 
 
 }
