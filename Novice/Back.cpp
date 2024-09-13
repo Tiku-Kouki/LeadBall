@@ -18,9 +18,9 @@ void Back::Update() {
 		}
 	}*/
 
-	if (position[0].x <= -1280.0f + player_->GetScroll()) {
-		position[0].x += 1280.0f/* - player_->GetScroll()*/;
-	}
+	//if (position[0].x <= -1280.0f + player_->GetScroll()) {
+	//	position[0].x += 1280.0f/* - player_->GetScroll()*/;
+	//}
 	if (position[1].x <= -1280.0f + player_->GetScroll()) {
 		position[1].x += 1280.0f /* - player_->GetScroll()*/;
 	}
