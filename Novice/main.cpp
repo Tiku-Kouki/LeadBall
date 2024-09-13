@@ -56,6 +56,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int select2 = Novice::LoadTexture("./Resorce/select2.png");
 	int select3 = Novice::LoadTexture("./Resorce/select3.png");
 	int selectHelp = Novice::LoadTexture("./Resorce/help.png");
+	int selectui = Novice::LoadTexture("./Resorce/StageSelectUI.png");
+
+	int gameclear = Novice::LoadTexture("./Resorce/GameClear.png");
+	int gameclearui = Novice::LoadTexture("./Resorce/GameClearUI.png");
 
 	std::unique_ptr<mouse> Mouse;
 	Mouse = std::make_unique<mouse>();
@@ -103,7 +107,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			     Novice::DrawSprite((int)Item[1].Position.x, (int)Item[1].Position.y, select1, 1.0f, 1.0f, 0.0f, WHITE);
 				 Novice::DrawSprite((int)Item[2].Position.x, (int)Item[2].Position.y, select2, 1.0f, 1.0f, 0.0f, WHITE);
 			     Novice::DrawSprite((int)Item[3].Position.x, (int)Item[3].Position.y, select3, 1.0f, 1.0f, 0.0f, WHITE);
-			    
+			     Novice::DrawSprite(0, 0, selectui, 1.0f, 1.0f, 0.0f, WHITE);
 
 			    break;
 		    case 2:
@@ -111,7 +115,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 0;
 			    }
-			    Novice::DrawBox(100, 100, 100, 100, 0.0f, BLACK, kFillModeSolid);
+			    if (Mouse->RightGetMouse()) {
+				    Scene = 1;
+			    }
+			    Novice::DrawSprite(0, 0, bg, 1.0f, 1.0f, 0.0f, WHITE);
+			    Novice::DrawSprite(100, 100, gameclear, 1.0f, 1.0f, 0.0f, WHITE);
+			    Novice::DrawSprite(100, 400, gameclearui, 1.0f, 1.0f, 0.0f, WHITE);
 			    break;
 		    case 3:
 			    // ゲーム説明
