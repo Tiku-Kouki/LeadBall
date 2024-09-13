@@ -3,11 +3,12 @@
 void Back::Initialize() {
 	position[0].x = 0;
 	position[1].x = 1280;
-	position[2].x = 2560;
-
-	position[3].x = 0;
-	position[4].x = 1280;
+	position[2].x = 0;
+	position[3].x = 1280;
+	position[4].x = 2560;
 	position[5].x = 2560;
+	position[6].x = 3840;
+	position[7].x = 3840;
 
 }
 
