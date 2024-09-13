@@ -81,7 +81,7 @@ void Player::Update() {
 		velocity.y += acceleration.y;
 		jumpEffect.SetPosition(Position);
 	}
-	if (Position.y >= 800) {
+	if (Position.y >= 800 || tile_->IsReset()==true) {
 		Position.y = 465;
 		Position.x = 25;
 		velocity.y = -10.0f;
@@ -102,6 +102,7 @@ void Player::Update() {
 	}*/
 	//重力
 	//Position.y += Gravity;
+	
 	if (Position.x <= goal_->GetPosition().x + goal_->GetRadius().x &&
 		goal_->GetPosition().x <= Position.x + Size &&
 		Position.y <= goal_->GetPosition().y + Size &&
