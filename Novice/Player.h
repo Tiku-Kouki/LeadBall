@@ -25,7 +25,7 @@ class Player {
 	void REDFlag();
 	void REDFlag2();
 
-	
+	bool IsDrop() { return isdrop; }
 
 	void CheckCollisionWithTile();
 
@@ -42,6 +42,7 @@ class Player {
 	bool BlueFlag;
 	bool RedFlag;
 	bool isJump;
+	bool isdrop;
 
 	//スクロール
 	float startScrollX;
