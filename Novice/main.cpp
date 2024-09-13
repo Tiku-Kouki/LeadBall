@@ -47,6 +47,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
         {300, 300, 100, 100}
     };
 
+	int titlesprite = Novice::LoadTexture("./Resorce/Title.png");
+	int gamedescriptionsprite = Novice::LoadTexture("./Resorce/Game_Description.png");
+
 	std::unique_ptr<mouse> Mouse;
 	Mouse = std::make_unique<mouse>();
 	// ウィンドウの×ボタンが押されるまでループ
@@ -70,7 +73,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    Scene = 1;
 				}
 
-				Novice::DrawBox(100, 100, 100, 100, 0.0f, RED, kFillModeSolid);
+				Novice::DrawSprite(0, 0, titlesprite, 1.0f, 1.0f, 0.0f, WHITE);
 				break;
 		    case 1:
 			    //画面選択
@@ -101,7 +104,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 1;
 			    }
-			    Novice::DrawBox(100, 100, 100, 100, 0.0f, WHITE, kFillModeSolid);
+			    Novice::DrawSprite(0, 0, gamedescriptionsprite, 1.0f, 1.0f, 0.0f, WHITE);
 			    break;
 		    case 4:
 			    // ステージ１
