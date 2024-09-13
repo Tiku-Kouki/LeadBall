@@ -1,7 +1,8 @@
 #include <Novice.h>
 #include"Tile.h"
-#include<Player.h>
+#include"Player.h"
 #include"Goal.h"
+#include"Back.h"
 
 const char kWindowTitle[] = "学籍番号";
 
@@ -30,6 +31,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	player->SetTile(tile);
 	goal->SetTile(tile);
 
+	Back* back = new Back();
+	back->Initialize();
+
 	int Scene = 0;
 	//タイル更新制限
 	bool StageFlag = false;
@@ -48,6 +52,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     };
 
 	std::unique_ptr<mouse> Mouse;
+
+	int Sound[2] = {Novice::LoadAudio("./Resorce/Sound/BGM.mp3"), Novice::LoadAudio("./Resorce/Sound/SE.wav")};
+	Novice::PlayAudio(Sound[0], true, 1.0f);
 	Mouse = std::make_unique<mouse>();
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -68,6 +75,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 1;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 				}
 
 				Novice::DrawBox(100, 100, 100, 100, 0.0f, RED, kFillModeSolid);
@@ -77,6 +85,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    goal->Initialize();
 			    tile->Initialize();
 			    player->Initilize();
+			    back->Initialize();
 			    StageFlag = false;
 
 				//ゲーム説明// ステージ１
@@ -86,6 +95,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    
 					if (Mouse->leftGetMouse() && Mouse->IsMouseOverBox((int)Item[i].Position.x, (int)Item[i].Position.y, (int)Item[i].Size.x, (int)Item[i].Size.y)) {
 					    Scene = i + 3;
+					    Novice::PlayAudio(Sound[1], false, 1.0f);
 				    }
 				} 
 			    break;
@@ -93,6 +103,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // クリア
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 0;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 			    }
 			    Novice::DrawBox(100, 100, 100, 100, 0.0f, BLACK, kFillModeSolid);
 			    break;
@@ -100,6 +111,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // ゲーム説明
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 1;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 			    }
 			    Novice::DrawBox(100, 100, 100, 100, 0.0f, WHITE, kFillModeSolid);
 			    break;
@@ -107,6 +119,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // ステージ１
 
 				// Update
+				//背景
+			    back->Update();
 			    //  //ゴール
 			    goal->Update();
 			    // プレイヤー
@@ -122,6 +136,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    tile->Update();
 
 			    // Draw
+			    // 背景
+			    back->Draw();
 			    //  ゴール
 			    goal->Draw();
 			    // タイル
@@ -133,6 +149,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // ステージ2
 				
 				//Update 
+				// 背景
+			    back->Update();
 				// //ゴール
 			    goal->Update();
 			    // プレイヤー
@@ -148,6 +166,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    tile->Update();
 
 				//Draw
+			    // 背景
+			    back->Draw();
 			    // ゴール
 			    goal->Draw();
 				//タイル
@@ -159,6 +179,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // ステージ3
 				
 				// Update
+			    // 背景
+			    back->Update();
 			    //  //ゴール
 			    goal->Update();
 			    // プレイヤー
@@ -174,6 +196,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    tile->Update();
 
 			    // Draw
+			    // 背景
+			    back->Draw();
 			    //  ゴール
 			    goal->Draw();
 			    // タイル
@@ -182,7 +206,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    player->Draw();
 			    break;
 		}
-		
 		
 		
 		

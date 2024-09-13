@@ -20,7 +20,7 @@ void Player::Initilize() {
 	endscroll = 2000;
 	acceleration = {0.0f, 0.2f};
 	
-	jumpEffect.Initialize(Position);
+	jumpEffect_.Initialize(Position);
 	effectTimer = 8;
 
 	goalFlag = true;
@@ -65,7 +65,7 @@ void Player::Update() {
 			isEffectActive = false;
 		}
 	}
-	jumpEffect.SetEffectFlag(isEffectActive);
+	jumpEffect_.SetEffectFlag(isEffectActive);
 		
 	
 	
@@ -79,7 +79,7 @@ void Player::Update() {
 		Position.y += velocity.y;
 		// 重力
 		velocity.y += acceleration.y;
-		jumpEffect.SetPosition(Position);
+		jumpEffect_.SetPosition(Position);
 	}
 	if (Position.y >= 800) {
 		Position.y = 465;
@@ -88,10 +88,10 @@ void Player::Update() {
 		isJump = false;
 
 		scrollX = 0;
-		jumpEffect.Initialize(Position);
+		jumpEffect_.Initialize(Position);
 	}
-	jumpEffect.Update();
-	jumpEffect.SetScrollX(scrollX);
+	jumpEffect_.Update();
+	jumpEffect_.SetScrollX(scrollX);
 	if (Position.y >= 600) {
 		Novice::PlayAudio(SoundSE[0], false, 1.0f);
 	}
@@ -137,6 +137,8 @@ void Player::Update() {
 
 		scrollX = Position.x - startScrollX;
 	}
+
+	back_.SetScrollX(scrollX);
 }
 
 
@@ -144,7 +146,7 @@ void Player::Update() {
 
 void Player::Draw() {
 	//Novice::DrawEllipse((int)Position.x - (int)scrollX, (int)Position.y, (int)Size, (int)Size, 0.0f, RED, kFillModeSolid);
-	jumpEffect.Draw();
+	jumpEffect_.Draw();
 	//ボール青くなる
 	if (BlueFlag == true && RedFlag == false) {
 		//Novice::DrawSprite((int)Position.x - (int)scrollX, (int)Position.y, Image[1], 1, 1, 0.0f, WHITE);

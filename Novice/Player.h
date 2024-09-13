@@ -2,6 +2,7 @@
 #include <Vector2.h>
 #include <Novice.h>
 #include <JumpEffect.h>
+#include<Back.h>
 
 class Goal;
 
@@ -59,9 +60,11 @@ class Player {
 	const float Size = 16;
 	const float Gravity=3;
 
-	JumpEffect jumpEffect;
+	JumpEffect jumpEffect_;
 	bool isEffectActive = false; 
 	float effectTimer = 0.0f;
+
+	Back back_;
 
 	//ゴールしたか
 	bool goalFlag;
