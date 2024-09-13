@@ -86,9 +86,11 @@ void Player::Update() {
 		Position.x = 25;
 		velocity.y = -10.0f;
 		isJump = false;
-
+		isdrop = true;
 		scrollX = 0;
 		jumpEffect_.Initialize(Position);
+	} else {
+		isdrop = false;
 	}
 	jumpEffect_.Update();
 	jumpEffect_.SetScrollX(scrollX);

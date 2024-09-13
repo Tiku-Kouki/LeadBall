@@ -44,10 +44,10 @@ private:
 	int halfTileRadius[11];
 	bool istile[11];
 
-	Vector2 redtilepos[6];
-	int redtileradius[6];
-	int halfRedTileRadius[6];
-	bool isredtile[6];
+	Vector2 redtilepos[10];
+	int redtileradius[10];
+	int halfRedTileRadius[10];
+	bool isredtile[10];
 
 	Vector2 fixedtilepos[15];
 	Vector2 fixedredtilepos[15];

@@ -2,7 +2,7 @@
 #include"Player.h"
 void Tile::Initialize() {
 	//青のタイルの初期化
-	for (int i = 0; i < 11; i++) {
+	for (int i = 0; i < tileNum; i++) {
 		tilepos[i].x = 0.0f;
 		tilepos[i].y = 0.0f;
 		tileradius[i] = 50;
@@ -10,7 +10,7 @@ void Tile::Initialize() {
 		istile[i] = false;
 	}
 	//赤のタイルの初期化
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < redtileNum; i++) {
 		redtilepos[i].x = 0.0f;
 		redtilepos[i].y = 0.0f;
 		redtileradius[i] = 50;
@@ -249,6 +249,8 @@ void Tile::Draw() {
 	Novice::DrawBox(60,130, 25,25, 0.0f, RED, kFillModeSolid);
 	Novice::DrawBox(60, 130, 25,25, 0.0f, BLACK, kFillModeWireFrame);
 
+	Novice::ScreenPrintf(0, 0, "%d", isOnCollision);
+
 	if (bluecaunter == 0||bluecaunter==10)
 	{
 		Novice::DrawSprite(140, 30, ui[1], 1.0f, 1.0f, 0.0f, WHITE);
@@ -293,6 +295,8 @@ void Tile::Draw() {
 		Novice::DrawSprite(140, 90, ui[8], 1.0f, 1.0f, 0.0f, WHITE);
 	} else if (redcaunter == 8) {
 		Novice::DrawSprite(140, 90, ui[9], 1.0f, 1.0f, 0.0f, WHITE);
+	} else if (redcaunter == 9) {
+		Novice::DrawSprite(140, 90, ui[10], 1.0f, 1.0f, 0.0f, WHITE);
 	}
 	
 	/*	for (int i = 0; i < 70; i++)
@@ -353,7 +357,7 @@ void Tile::SelectStage()
 		fixedredtilepos[10] = {2692.0f, 450.0f};
 		fixedtilepos[11] = {3142.0f, 450.0f};
 		fixedredtilepos[10] = {3292.0f, 450.0f};
-		tileNum = 11;
+		tileNum = 10;
 		redtileNum = 8;
 		
 	}
@@ -380,8 +384,8 @@ void Tile::SelectStage()
 		fixedtilepos[12] = {2550.0f, 500.0f};
 		fixedtilepos[13] = {2600.0f, 450.0f};
 		fixedredtilepos[4] = {2800.0f, 450.0f};
-		tileNum = 12;
-		redtileNum = 6;
+		tileNum = 11;
+		redtileNum = 9;
 	
 	}
 }
@@ -412,8 +416,8 @@ void Tile::Stage3() {
 	isstage2 = false;
 	isstage = false;
 	isstage3 = true;
-	bluecaunter = 12;
-	redcaunter = 6;
+	bluecaunter = 11;
+	redcaunter = 9;
 }
 
 float Tile::Length(const Vector2& v) 
