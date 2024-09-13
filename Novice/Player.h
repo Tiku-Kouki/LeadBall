@@ -67,10 +67,10 @@ class Player {
 	bool goalFlag;
 	bool GoalsceneFlag;
 
-	int Image[2] = {Novice::LoadTexture("./Resorce/Player_1.png"), Novice::LoadTexture("./Resorce/Player_2.png")};
+	int Image[2] = {Novice::LoadTexture("./Resources/Player_1.png"), Novice::LoadTexture("./Resources/Player_2.png")};
 
-	int SoundSE[3] = {Novice::LoadAudio("./Resorce/Sound/Down.wav"),
-					Novice::LoadAudio("./Resorce/Sound/Jump1.wav"), 
-					Novice::LoadAudio("./Resorce/Sound/Jump2.wav")
+	int SoundSE[3] = {Novice::LoadAudio("./Resources/Sound/Down.wav"),
+					Novice::LoadAudio("./Resources/Sound/Jump1.wav"), 
+					Novice::LoadAudio("./Resources/Sound/Jump2.wav")
 	};
 };

@@ -52,22 +52,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
         {700, 300, 100, 100}
     };
 
-	int titlesprite = Novice::LoadTexture("./Resorce/Title.png");
-	int gamedescriptionsprite = Novice::LoadTexture("./Resorce/Game_Description.png");
+	int titlesprite = Novice::LoadTexture("./Resources/Title.png");
+	int gamedescriptionsprite = Novice::LoadTexture("./Resources/Game_Description.png");
 
-	int bg = Novice::LoadTexture("./Resorce/Back.png");
+	int bg = Novice::LoadTexture("./Resources/Back.png");
 			  
-	int select1 = Novice::LoadTexture("./Resorce/select1.png");
-	int select2 = Novice::LoadTexture("./Resorce/select2.png");
-	int select3 = Novice::LoadTexture("./Resorce/select3.png");
-	int selectHelp = Novice::LoadTexture("./Resorce/help.png");
-	int selectui = Novice::LoadTexture("./Resorce/StageSelectUI.png");
+	int select1 = Novice::LoadTexture("./Resources/select1.png");
+	int select2 = Novice::LoadTexture("./Resources/select2.png");
+	int select3 = Novice::LoadTexture("./Resources/select3.png");
+	int selectHelp = Novice::LoadTexture("./Resources/help.png");
+	int selectui = Novice::LoadTexture("./Resources/StageSelectUI.png");
 
-	int gameclear = Novice::LoadTexture("./Resorce/GameClear.png");
-	int gameclearui = Novice::LoadTexture("./Resorce/GameClearUI.png");
+	int gameclear = Novice::LoadTexture("./Resources/GameClear.png");
+	int gameclearui = Novice::LoadTexture("./Resources/GameClearUI.png");
 
-	int Sound[3] = {Novice::LoadAudio("./Resorce/Sound/BGM.mp3"), Novice::LoadAudio("./Resorce/Sound/SE.wav"), Novice::LoadAudio("./Resorce/Sound/CrearSE.mp3")};
-	Novice::PlayAudio(Sound[0], true, 0.27f);
+	int Sound[3] = {Novice::LoadAudio("./Resources/Sound/BGM.mp3"), Novice::LoadAudio("./Resources/Sound/SE.wav"), Novice::LoadAudio("./Resources/Sound/CrearSE.mp3")};
+	Novice::PlayAudio(Sound[0], true, 0.3f);
 
 	std::unique_ptr<mouse> Mouse;
 	Mouse = std::make_unique<mouse>();

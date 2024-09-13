@@ -16,5 +16,5 @@ private:
 
 	Vector2 position[6];
 
-	int BackSp[2] = {Novice::LoadTexture("./Resorce/Back.png"), Novice::LoadTexture("./Resorce/BackCloud.png")};
+	int BackSp[2] = {Novice::LoadTexture("./Resources/Back.png"), Novice::LoadTexture("./Resources/BackCloud.png")};
 };

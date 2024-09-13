@@ -33,5 +33,5 @@ private:
 	Player* player_ = nullptr;
 	Tile* tile_ = nullptr;
 
-	int Sprite = Novice::LoadTexture("./Resorce/Goal.png");
+	int Sprite = Novice::LoadTexture("./Resources/Goal.png");
 };

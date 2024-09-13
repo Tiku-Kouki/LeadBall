@@ -77,22 +77,22 @@ private:
 	std::unique_ptr<mouse> Mouse;
 	Player* player_ = nullptr;
 	
-	int SoundSE[2] = {Novice::LoadAudio("./Resorce/Sound/Left.mp3"), Novice::LoadAudio("./Resorce/Sound/Right.mp3")};
+	int SoundSE[2] = {Novice::LoadAudio("./Resources/Sound/Left.mp3"), Novice::LoadAudio("./Resources/Sound/Right.mp3")};
 
 
 	char keys[256];
 	char preKeys[256];
 
-	int ui[11] = {Novice::LoadTexture("./Resorce/UI.png"), Novice::LoadTexture("./Resorce/0.png"), Novice::LoadTexture("./Resorce/1.png"),
-				  Novice::LoadTexture("./Resorce/2.png"), Novice::LoadTexture("./Resorce/3.png"), Novice::LoadTexture("./Resorce/4.png"),
-	              Novice::LoadTexture("./Resorce/5.png"),  Novice::LoadTexture("./Resorce/6.png"), Novice::LoadTexture("./Resorce/7.png"), 
-				  Novice::LoadTexture("./Resorce/8.png"), Novice::LoadTexture("./Resorce/9.png")
+	int ui[11] = {Novice::LoadTexture("./Resources/UI.png"), Novice::LoadTexture("./Resources/0.png"), Novice::LoadTexture("./Resources/1.png"),
+				  Novice::LoadTexture("./Resources/2.png"), Novice::LoadTexture("./Resources/3.png"), Novice::LoadTexture("./Resources/4.png"),
+	              Novice::LoadTexture("./Resources/5.png"),  Novice::LoadTexture("./Resources/6.png"), Novice::LoadTexture("./Resources/7.png"), 
+				  Novice::LoadTexture("./Resources/8.png"), Novice::LoadTexture("./Resources/9.png")
 	};
 	//タイルリソース
-	int tile[4] = {Novice::LoadTexture("./Resorce/Hand1.png"), Novice::LoadTexture("./Resorce/Hand2.png"), 
-				   Novice::LoadTexture("./Resorce/Hand3.png"), Novice::LoadTexture("./Resorce/Hand4.png")};
+	int tile[4] = {
+	    Novice::LoadTexture("./Resources/Hand1.png"), Novice::LoadTexture("./Resources/Hand2.png"), Novice::LoadTexture("./Resources/Hand3.png"), Novice::LoadTexture("./Resources/Hand4.png")};
 
-	int resetui = Novice::LoadTexture("./Resorce/Reset.png");
+	int resetui = Novice::LoadTexture("./Resources/Reset.png");
 
 	const Vector2 ResetPos{1060, 60};
 	const float ResetSize = 80;
