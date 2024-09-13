@@ -1,7 +1,7 @@
 #include "Player.h"
 #include"Goal.h"
 #include"Tile.h"
-void Player::Start() {
+void Player::Initilize() {
 
 	Position = {25,465};
 	Speed = {3, 3};
@@ -24,6 +24,7 @@ void Player::Start() {
 	effectTimer = 8;
 
 	goalFlag = true;
+	GoalsceneFlag = false;
 }
 
 void Player::Update() { 
@@ -120,6 +121,8 @@ void Player::Update() {
 		{
 			velocity.y = -5.0f;
 			goalendtimer++;
+
+			GoalsceneFlag = true;
 		}
 		if (goalendtimer >= 100)
 		{

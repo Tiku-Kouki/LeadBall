@@ -3,6 +3,7 @@
 #include <Novice.h>
 #include"mouse.h"
 #include <memory>
+#include <algorithm>
 
 class Player;
 
@@ -18,11 +19,21 @@ public:
 
 	void SelectStage();
 
+	void Stage1();
+	void Stage2();
+	void Stage3();
+
 	void SelectUI();
 
 	bool IsStage() { return isstage; }
 	bool IsStage2() { return isstage2; }
 	bool IsStage3() { return isstage3; }
+
+	float Length(const Vector2& v);
+
+	Vector2 Subtract(const Vector2& v1, Vector2& v2);
+
+	bool IsCollision(Vector2 v, float radius, float minX, float maxX, float minY, float maxY);
 	
 private:
 	//タイル
@@ -64,6 +75,8 @@ private:
 	std::unique_ptr<mouse> Mouse;
 	Player* player_ = nullptr;
 	
+	int SoundSE[2] = {Novice::LoadAudio("./Resorce/Sound/Left.mp3"), Novice::LoadAudio("./Resorce/Sound/Right.mp3")};
+
 
 	char keys[256];
 	char preKeys[256];
@@ -74,4 +87,6 @@ private:
 				  Novice::LoadTexture("./Resorce/8.png"), Novice::LoadTexture("./Resorce/9.png")
 	};
 
+	const Vector2 ResetPos{1160, 60};
+	const float ResetSize = 80;
 };
