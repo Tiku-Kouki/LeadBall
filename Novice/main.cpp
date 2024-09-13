@@ -121,7 +121,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 				// Update
 				//背景
-			    back->Update();
+			    //back->Update();
 			    //  //ゴール
 			    goal->Update();
 			    // プレイヤー
@@ -151,7 +151,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				
 				//Update 
 				// 背景
-			    back->Update();
+			    //back->Update();
 				// //ゴール
 			    goal->Update();
 			    // プレイヤー
@@ -181,7 +181,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				
 				// Update
 			    // 背景
-			    back->Update();
+			    //back->Update();
 			    //  //ゴール
 			    goal->Update();
 			    // プレイヤー

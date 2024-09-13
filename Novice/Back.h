@@ -14,7 +14,7 @@ public:
 private:
 	Player* player_ = nullptr;
 
-	Vector2 position[4];
+	Vector2 position[6];
 
 	int BackSp[2] = {Novice::LoadTexture("./Resorce/Back.png"), Novice::LoadTexture("./Resorce/BackCloud.png")};
 };
