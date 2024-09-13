@@ -96,10 +96,8 @@ void Tile::Update() {
 		
 		
 		
-		if (player_->GetPosition().x  <= tilepos[i].x + tileradius[0] && tilepos[i].x <= player_->GetPosition().x+ player_->GetSize() &&
-		    player_->GetPosition().y <= tilepos[i].y + tileradius[1] &&
-		    tilepos[i].y <= player_->GetPosition().y + player_->GetSize() &&
-		    istile[i] == true)
+		
+		if (IsCollision(player_->GetPosition(), player_->GetSize(), tilepos[i].x, tilepos[i].x + tileradius[0], tilepos[i].y, tilepos[i].y + tileradius[1]) && istile[i] == true)
 		{
 			player_->BLUEFlag();
 			break;
@@ -154,23 +152,28 @@ void Tile::Update() {
 			redcaunter += 1;
 			break;
 		}
-		if (player_->GetPosition().x <= redtilepos[i].x + redtileradius[0] && redtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
+		/*if (player_->GetPosition().x <= redtilepos[i].x + redtileradius[0] && redtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
 		    player_->GetPosition().y <= redtilepos[i].y + redtileradius[1] &&
-		    redtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isredtile[i] == true) {
+		    redtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isredtile[i] == true) {*/
+		if (IsCollision(player_->GetPosition(), player_->GetSize(), redtilepos[i].x, redtilepos[i].x + redtileradius[0], redtilepos[i].y, redtilepos[i].y + redtileradius[1]) && isredtile[i] == true){
 			player_->REDFlag();
 			break;
 		}
 	}
 
 	for (int i = 0; i < 15; i++) {
-		if (player_->GetPosition().x <= fixedtilepos[i].x + fixedtileradius[0] && fixedtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
-		    player_->GetPosition().y <= fixedtilepos[i].y + fixedtileradius[1] && fixedtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isfixedtile[i] == true ) {
+		/*if (player_->GetPosition().x <= fixedtilepos[i].x + fixedtileradius[0] && fixedtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
+		    player_->GetPosition().y <= fixedtilepos[i].y + fixedtileradius[1] && fixedtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isfixedtile[i] == true )*/
+		if (IsCollision(player_->GetPosition(), player_->GetSize(), fixedtilepos[i].x, fixedtilepos[i].x + fixedtileradius[0], fixedtilepos[i].y, fixedtilepos[i].y + fixedtileradius[1]) && isfixedtile[i] == true)
+		{
 			
 			player_->BLUEFlag();
 			break;
 		}
-		if (player_->GetPosition().x <= fixedredtilepos[i].x + fixedredtileradius[0] && fixedredtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
-		    player_->GetPosition().y <= fixedredtilepos[i].y + fixedredtileradius[1] && fixedredtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isfixedredtile[i] == true) {
+		/*if (player_->GetPosition().x <= fixedredtilepos[i].x + fixedredtileradius[0] && fixedredtilepos[i].x <= player_->GetPosition().x + player_->GetSize() &&
+		    player_->GetPosition().y <= fixedredtilepos[i].y + fixedredtileradius[1] && fixedredtilepos[i].y <= player_->GetPosition().y + player_->GetSize() && isfixedredtile[i] == true)*/ 
+		if (IsCollision(player_->GetPosition(), player_->GetSize(), fixedredtilepos[i].x, fixedredtilepos[i].x + fixedredtileradius[0], fixedredtilepos[i].y, fixedredtilepos[i].y + fixedredtileradius[1]) && isfixedredtile[i] == true)
+		{
 		
 			player_->REDFlag();
 			break;
@@ -390,6 +393,36 @@ void Tile::Stage3() {
 	isstage3 = true;
 	bluecaunter = 12;
 	redcaunter = 6;
+}
+
+float Tile::Length(const Vector2& v) 
+{ 
+	float length = (float)sqrt(v.x * v.x + v.y * v.y);
+	return length;
+}
+
+Vector2 Tile::Subtract(const Vector2& v1, Vector2& v2) 
+{ 
+	Vector2 result;
+	result.x = v1.x - v2.x;
+	result.y = v1.y - v2.y;
+	return result;
+}
+
+bool Tile::IsCollision(Vector2 v, float radius, float minX, float maxX, float minY, float maxY) { 
+	// 最近接点を求める
+
+	Vector2 closestPoint{std::clamp(v.x, minX, maxX), std::clamp(v.y, minY, maxY)};
+
+	// 最近接点との弾の中心との距離を求める
+	float distance = Length(Subtract(v, closestPoint));
+
+	// 距離が半径よりも短ければ衝突
+	if (distance <= radius) {
+		// 当たった処理を諸々
+		return true;
+	}
+	return false;
 }
 
 
