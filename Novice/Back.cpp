@@ -12,11 +12,11 @@ void Back::Update() {
 	position[2].x -= 0.5f;
 	position[3].x -= 0.5f;
 
-	/*for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 4; i++) {
 		if (position[i].x <= -1280.0f - player_->GetScroll()) {
 			position[i].x = 1280.0f - player_->GetScroll();
 		}
-	}*/
+	}
 }
 
 void Back::Draw() {
