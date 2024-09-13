@@ -33,6 +33,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Back* back = new Back();
 	back->Initialize();
+	back->SetPlayer(player);
 
 	int Scene = 0;
 	//タイル更新制限

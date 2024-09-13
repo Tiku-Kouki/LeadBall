@@ -137,8 +137,6 @@ void Player::Update() {
 
 		scrollX = Position.x - startScrollX;
 	}
-
-	back_.SetScrollX(scrollX);
 }
 
 
