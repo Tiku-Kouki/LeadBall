@@ -55,7 +55,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	std::unique_ptr<mouse> Mouse;
 
 	int Sound[2] = {Novice::LoadAudio("./Resorce/Sound/BGM.mp3"), Novice::LoadAudio("./Resorce/Sound/SE.wav")};
-	Novice::PlayAudio(Sound[0], true, 1.0f);
+	Novice::PlayAudio(Sound[0], true, 0.27f);
 	Mouse = std::make_unique<mouse>();
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
