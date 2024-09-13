@@ -249,7 +249,7 @@ void Tile::Draw() {
 	Novice::DrawBox(60,130, 25,25, 0.0f, RED, kFillModeSolid);
 	Novice::DrawBox(60, 130, 25,25, 0.0f, BLACK, kFillModeWireFrame);
 
-	Novice::ScreenPrintf(0, 0, "%d", isOnCollision);
+	//Novice::ScreenPrintf(0, 0, "%d", isOnCollision);
 
 	if (bluecaunter == 0||bluecaunter==10)
 	{
