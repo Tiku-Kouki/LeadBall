@@ -142,7 +142,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    }
 			    // タイル
 			    if (!StageFlag) {
-				    tile->Stage1();
+				    tile->Stage2();
 			    }
 			    StageFlag = true;
 			    tile->Update();
@@ -168,7 +168,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    }
 			    // タイル
 			    if (!StageFlag) {
-				    tile->Stage1();
+				    tile->Stage3();
 			    }
 			    StageFlag = true;
 			    tile->Update();
