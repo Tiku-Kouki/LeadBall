@@ -44,6 +44,18 @@
     <ClCompile Include="mouse.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Goal.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpEffect.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Back.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -119,5 +131,9 @@
     </ClInclude>
     <ClInclude Include="Tile.h" />
     <ClInclude Include="mouse.h" />
+    <ClInclude Include="Goal.h" />
+    <ClInclude Include="JumpEffect.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Back.h" />
   </ItemGroup>
 </Project>

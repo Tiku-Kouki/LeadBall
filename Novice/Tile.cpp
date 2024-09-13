@@ -207,28 +207,39 @@ void Tile::Update() {
 }
 
 void Tile::Draw() {
-	
+	//自青
 	for (int i = 0; i < tileNum; i++) {
 		if (istile[i] == true) {
-			Novice::DrawBox((int)tilepos[i].x - player_->GetScroll(), (int)tilepos[i].y, tileradius[i], tileradius[i], 0.0f, BLUE, kFillModeSolid);
-			Novice::DrawBox((int)tilepos[i].x - player_->GetScroll(), (int)tilepos[i].y, tileradius[i], tileradius[i], 0.0f, BLACK, kFillModeWireFrame);
+			//Novice::DrawBox((int)tilepos[i].x - player_->GetScroll(), (int)tilepos[i].y, tileradius[i], tileradius[i], 0.0f, BLUE, kFillModeSolid);
+			//Novice::DrawBox((int)tilepos[i].x - player_->GetScroll(), (int)tilepos[i].y, tileradius[i], tileradius[i], 0.0f, BLACK, kFillModeWireFrame);
+		
+			Novice::DrawSprite((int)tilepos[i].x - player_->GetScroll(), (int)tilepos[i].y,tile[0], 1.0f, 1.0f, 0.0f, WHITE);
 		}
 		
 	}
+	//自赤
 	for (int i = 0; i < redtileNum; i++) {
 		if (isredtile[i] == true) {
-			Novice::DrawBox((int)redtilepos[i].x - player_->GetScroll(), (int)redtilepos[i].y, redtileradius[i], redtileradius[i], 0.0f, RED, kFillModeSolid);
-			Novice::DrawBox((int)redtilepos[i].x - player_->GetScroll(), (int)redtilepos[i].y, redtileradius[i], redtileradius[i], 0.0f, BLACK, kFillModeWireFrame);
+			//Novice::DrawBox((int)redtilepos[i].x - player_->GetScroll(), (int)redtilepos[i].y, redtileradius[i], redtileradius[i], 0.0f, RED, kFillModeSolid);
+			//Novice::DrawBox((int)redtilepos[i].x - player_->GetScroll(), (int)redtilepos[i].y, redtileradius[i], redtileradius[i], 0.0f, BLACK, kFillModeWireFrame);
+
+			Novice::DrawSprite((int)redtilepos[i].x - player_->GetScroll(), (int)redtilepos[i].y, tile[1], 1.0f, 1.0f, 0.0f, WHITE);
 		}
 	}
 	for (int i = 0; i < 15; i++) {
+		// 固青
 		if (isfixedtile[i] == true) {
-			Novice::DrawBox((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, BLUE, kFillModeSolid);
-			Novice::DrawBox((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, WHITE, kFillModeWireFrame);
+			//Novice::DrawBox((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, BLUE, kFillModeSolid);
+			//Novice::DrawBox((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, fixedtileradius[i], fixedtileradius[i], 0.0f, WHITE, kFillModeWireFrame);
+
+			Novice::DrawSprite((int)fixedtilepos[i].x + i * 2 - player_->GetScroll(), (int)fixedtilepos[i].y, tile[2], 1.0f, 1.0f, 0.0f, WHITE);
 		}
+		// 固赤
 		if (isfixedredtile[i] == true) {
-			Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, RED, kFillModeSolid);
-			Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, WHITE, kFillModeWireFrame);
+			//Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, RED, kFillModeSolid);
+			//Novice::DrawBox((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, fixedredtileradius[i], fixedredtileradius[i], 0.0f, WHITE, kFillModeWireFrame);
+
+			Novice::DrawSprite((int)fixedredtilepos[i].x + i * 4 - player_->GetScroll(), (int)fixedredtilepos[i].y, tile[3], 1.0f, 1.0f, 0.0f, WHITE);
 		}
 	}
 	Novice::DrawSprite(0, 0, ui[0], 1.0f, 1.0f, 0.0f, WHITE);

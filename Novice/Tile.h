@@ -88,6 +88,9 @@ private:
 	              Novice::LoadTexture("./Resorce/5.png"),  Novice::LoadTexture("./Resorce/6.png"), Novice::LoadTexture("./Resorce/7.png"), 
 				  Novice::LoadTexture("./Resorce/8.png"), Novice::LoadTexture("./Resorce/9.png")
 	};
+	//タイルリソース
+	int tile[4] = {Novice::LoadTexture("./Resorce/Hand1.png"), Novice::LoadTexture("./Resorce/Hand2.png"), 
+				   Novice::LoadTexture("./Resorce/Hand3.png"), Novice::LoadTexture("./Resorce/Hand4.png")};
 
 	int resetui = Novice::LoadTexture("./Resorce/Reset.png");
 

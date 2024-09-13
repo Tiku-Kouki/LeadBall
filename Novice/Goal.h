@@ -26,11 +26,12 @@ private:
 	Vector2 position;
 
 	Vector2 radius;
-	//スタートも作っておく
+	// スタートも作っておく
 	Vector2 startposition;
 	Vector2 startradius;
 
 	Player* player_ = nullptr;
 	Tile* tile_ = nullptr;
 
+	int Sprite = Novice::LoadTexture("./Resorce/Goal.png");
 };
