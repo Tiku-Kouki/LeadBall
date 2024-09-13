@@ -194,6 +194,11 @@ void Tile::Update() {
 				redcaunter += 1;
 			}
 		}
+		isReset = true;
+	}
+	else
+	{
+		isReset = false;
 	}
 }
 
@@ -283,7 +288,8 @@ void Tile::Draw() {
 		    Novice::DrawLine(0 - player_->GetScroll(), 0 + (50 * j) , 3960 - player_->GetScroll(), 0 + (50 * j) , BLACK);
 	    }*/
 	
-	Novice::DrawBox((int)ResetPos.x, (int)ResetPos.y, (int)ResetSize, (int)ResetSize, 0.0f, WHITE, kFillModeSolid);
+	Novice::DrawBox((int)ResetPos.x, (int)ResetPos.y, (int)ResetSize, (int)ResetSize, 0.0f, RED, kFillModeSolid);
+	Novice::DrawSprite((int)ResetPos.x-30, (int)ResetPos.y-10, resetui, 1.0f, 1.0f, 0.0f, WHITE);
 }
 
 void Tile::SelectStage() 

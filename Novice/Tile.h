@@ -34,6 +34,8 @@ public:
 	Vector2 Subtract(const Vector2& v1, Vector2& v2);
 
 	bool IsCollision(Vector2 v, float radius, float minX, float maxX, float minY, float maxY);
+
+	bool IsReset() { return isReset; }
 	
 private:
 	//タイル
@@ -82,6 +84,11 @@ private:
 				  Novice::LoadTexture("./Resorce/8.png"), Novice::LoadTexture("./Resorce/9.png")
 	};
 
-	const Vector2 ResetPos{1160, 60};
+	int resetui = Novice::LoadTexture("./Resorce/Reset.png");
+
+	const Vector2 ResetPos{1060, 60};
 	const float ResetSize = 80;
+	bool isReset;
+
+
 };
