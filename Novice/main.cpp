@@ -163,6 +163,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    tile->Update();
 
 			    // Draw
+				
+			    // 背景
+			    back->Draw();
 			    //  ゴール
 			    goal->Draw();
 			    // タイル
@@ -190,7 +193,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    tile->Update();
 
 				//Draw
-			    // ゴール
+			    //  背景
+			    back->Draw();
+				// ゴール
 			    goal->Draw();
 				//タイル
 			    tile->Draw();
@@ -217,7 +222,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    tile->Update();
 
 			    // Draw
-			    //  ゴール
+			    // 背景
+			    back->Draw();
+				//  ゴール
 			    goal->Draw();
 			    // タイル
 			    tile->Draw();
