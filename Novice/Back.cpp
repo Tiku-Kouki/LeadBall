@@ -17,6 +17,24 @@ void Back::Update() {
 	position[3].x--;
 	position[4].x--;
 	position[5].x--;
+	if (position[4].x <= -1280.0f + player_->GetScroll()) {
+		position[4].x += 1280.0f /* - player_->GetScroll()*/;
+	}
+	if (position[6].x <= -1280.0f + player_->GetScroll()) {
+		position[6].x += 1280.0f /* - player_->GetScroll()*/;
+	}
+	/*if (position[1].x <= -1280.0f - player_->GetScroll()) {
+	    position[1].x += 1280.0f - player_->GetScroll();
+	}
+	if (position[2].x <= -1280.0f - player_->GetScroll()) {
+	    position[2].x += 1280.0f - player_->GetScroll();
+	}
+	if (position[3].x <= -1280.0f - player_->GetScroll()) {
+	    position[3].x += 1280.0f - player_->GetScroll();
+	}*/
+	if (player_->IsDrop()) {
+		Initialize();
+	}
 
 	/*for (int i = 0; i < 4; i++) {
 		if (position[i].x <= -1280.0f - player_->GetScroll()) {
