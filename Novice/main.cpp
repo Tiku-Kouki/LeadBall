@@ -54,8 +54,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	std::unique_ptr<mouse> Mouse;
 
-	int Sound[2] = {Novice::LoadAudio("./Resorce/Sound/BGM.mp3"), Novice::LoadAudio("./Resorce/Sound/SE.wav")};
-	Novice::PlayAudio(Sound[0], true, 1.0f);
+	int Sound[3] = {
+		Novice::LoadAudio("./Resorce/Sound/BGM.mp3"), 
+		Novice::LoadAudio("./Resorce/Sound/SE.wav")	, 
+		Novice::LoadAudio("./Resorce/Sound/CrearSE.mp3")
+	};
+	Novice::PlayAudio(Sound[0], true, 0.27f);
 	Mouse = std::make_unique<mouse>();
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -78,6 +82,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    Scene = 1;
 				    Novice::PlayAudio(Sound[1], false, 1.0f);
 				}
+
+				
 
 				Novice::DrawBox(100, 100, 100, 100, 0.0f, RED, kFillModeSolid);
 				break;
@@ -127,7 +133,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // プレイヤー
 			    player->Update();
 			    if (player->GetGoalSceneFlag()) {
-				    Scene = 2;
+				    Novice::PlayAudio(Sound[2], false, 1.0f);
+					Scene = 2;
 				}
 			    // タイル
 			    if (!StageFlag) {
@@ -157,6 +164,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // プレイヤー
 			    player->Update();
 			    if (player->GetGoalSceneFlag()) {
+				    Novice::PlayAudio(Sound[2], false, 1.0f);
 				    Scene = 2;
 			    }
 			    // タイル
@@ -187,6 +195,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // プレイヤー
 			    player->Update();
 			    if (player->GetGoalSceneFlag()) {
+				    Novice::PlayAudio(Sound[2], false, 1.0f);
 				    Scene = 2;
 			    }
 			    // タイル
