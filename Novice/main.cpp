@@ -2,6 +2,7 @@
 #include"Tile.h"
 #include<Player.h>
 #include"Goal.h"
+#include"Back.h"
 
 const char kWindowTitle[] = "3043_リードボール";
 
@@ -29,6 +30,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	player->SetGoal(goal);
 	player->SetTile(tile);
 	goal->SetTile(tile);
+
+	Back* back = new Back();
+	back->Initialize();
+	back->SetPlayer(player);
 
 	int Scene = 0;
 	//タイル更新制限
@@ -61,6 +66,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int gameclear = Novice::LoadTexture("./Resorce/GameClear.png");
 	int gameclearui = Novice::LoadTexture("./Resorce/GameClearUI.png");
 
+	int Sound[3] = {Novice::LoadAudio("./Resorce/Sound/BGM.mp3"), Novice::LoadAudio("./Resorce/Sound/SE.wav"), Novice::LoadAudio("./Resorce/Sound/CrearSE.mp3")};
+	Novice::PlayAudio(Sound[0], true, 0.27f);
+
 	std::unique_ptr<mouse> Mouse;
 	Mouse = std::make_unique<mouse>();
 	// ウィンドウの×ボタンが押されるまでループ
@@ -82,6 +90,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 1;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 				}
 
 				Novice::DrawSprite(0, 0, titlesprite, 1.0f, 1.0f, 0.0f, WHITE);
@@ -99,6 +108,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    
 					if (Mouse->leftGetMouse() && Mouse->IsMouseOverBox((int)Item[i].Position.x, (int)Item[i].Position.y, (int)Item[i].Size.x, (int)Item[i].Size.y)) {
 					    Scene = i + 3;
+					    Novice::PlayAudio(Sound[1], false, 1.0f);
 				    }
 				} 
 
@@ -114,9 +124,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // クリア
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 0;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 			    }
 			    if (Mouse->RightGetMouse()) {
 				    Scene = 1;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 			    }
 			    Novice::DrawSprite(0, 0, bg, 1.0f, 1.0f, 0.0f, WHITE);
 			    Novice::DrawSprite(100, 100, gameclear, 1.0f, 1.0f, 0.0f, WHITE);
@@ -126,6 +138,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    // ゲーム説明
 			    if (Mouse->leftGetMouse()) {
 				    Scene = 1;
+				    Novice::PlayAudio(Sound[1], false, 1.0f);
 			    }
 			    Novice::DrawSprite(0, 0, gamedescriptionsprite, 1.0f, 1.0f, 0.0f, WHITE);
 			    break;
@@ -139,6 +152,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    player->Update();
 			    if (player->GetGoalSceneFlag()) {
 				    Scene = 2;
+				    Novice::PlayAudio(Sound[2], false, 1.0f);
+
 				}
 			    // タイル
 			    if (!StageFlag) {
@@ -165,6 +180,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    player->Update();
 			    if (player->GetGoalSceneFlag()) {
 				    Scene = 2;
+				    Novice::PlayAudio(Sound[2], false, 1.0f);
 			    }
 			    // タイル
 			    if (!StageFlag) {
@@ -191,6 +207,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    player->Update();
 			    if (player->GetGoalSceneFlag()) {
 				    Scene = 2;
+				    Novice::PlayAudio(Sound[2], false, 1.0f);
 			    }
 			    // タイル
 			    if (!StageFlag) {
